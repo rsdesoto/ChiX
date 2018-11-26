@@ -1,0 +1,30 @@
+input {
+  width: 20%;
+}
+form {
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+}
+.display-4 {
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}
+.bgimg {
+  background-image: url(images/bean.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px -90px;
+  height: 500px;
+}
+.lead {
+  color: white;
+  text-align: center;
+}
+.card {
+  float: left;
+  width: 33.33%;
+}
+.card-img-top {
+}
