@@ -40,8 +40,7 @@ $(document).on('click', '#searchLocation', function() {
         console.log(response);
         lat = response.results[0].geometry.location.lat;
         lng = response.results[0].geometry.location.lng;
-        $('body').append($('<script id="appendedScript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'));
-        //https://www.html5rocks.com/en/tutorials/speed/script-loading/ idea for the above statement
+        $('body').append($('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'));
     });
   });
 
