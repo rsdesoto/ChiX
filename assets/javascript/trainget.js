@@ -67,6 +67,8 @@ function doWork(data) {
 
     console.log(data);
 
+    $("#train-table > tbody").empty();
+
     $.ajax({
         url: trainQuery,
         method: "GET"
@@ -118,7 +120,3 @@ function doWork(data) {
         }
     });
 }
-
-$("#train-get").on("click", function() {
-    getNearestStation(xCoord, yCoord);
-});
