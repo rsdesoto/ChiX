@@ -83,7 +83,7 @@ $(document).on("click", "#searchLocation", function() {
         });
     });
 
-    getNearestStation(searchLng, searchLat);
+    // getNearestStation(searchLng, searchLat);
 
     function clearMarkers() {
         for (let i = 0; i < markerArr[i].length; i++) {
@@ -191,7 +191,7 @@ function trainInfoGet(data) {
         "&max=10&outputType=JSON";
 
     var trainQuery = "https://cors-anywhere.herokuapp.com/" + trainQueryRaw;
-
+    $("#train-table > tbody").empty();
     $.ajax({
         url: trainQuery,
         method: "GET"
