@@ -44,6 +44,7 @@ database.ref("/location").once("value", function(snapshot) {
             );
             //https://www.html5rocks.com/en/tutorials/speed/script-loading/ idea for the above statement
         });
+        getNearestStation(searchLng, searchLat);
     });
 });
 
