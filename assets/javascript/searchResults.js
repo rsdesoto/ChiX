@@ -69,9 +69,11 @@ $(document).on("click", "#searchLocation", function() {
          getNearestStation(searchLng, searchLat);
         $('#appendedScript').remove();
         $('body').append($('<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'));
-
     });
   });
+
+    getNearestStation(searchLng, searchLat);
+});
 
 function initMap() {   //this functional has to match final call
   let map = new google.maps.Map(document.getElementById('map'), {
@@ -110,10 +112,8 @@ var trainRts = {
     Brn: "Brown Line"
 };
 
-// var xCoord = -87.6675;
-// var yCoord = 42.018185;
-
 var geoRaw = "https://data.cityofchicago.org/resource/8mj8-j3c4.json";
+
 
 function getNearestStation(xCoord, yCoord) {
     console.log("calculating nearest station...");
