@@ -16,7 +16,10 @@ let address = "Chicago, Illinois"; //in case error occurs
 let resultsName = [];
 let resultsLat = [];
 let resultsLng = [];
-let query = "coffee";
+let query = 'coffee';
+let markerArr = [];
+
+
 
 database.ref("/location").once("value", function(snapshot) {
     address = snapshot.val().address; //the last line of the search results html happens before this so an error occurs
@@ -32,7 +35,7 @@ database.ref("/location").once("value", function(snapshot) {
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 10; i++) {
                 resultsName.push(response.response.venues[i].name);
                 resultsLat.push(response.response.venues[i].location.lat);
                 resultsLng.push(response.response.venues[i].location.lng);
@@ -51,6 +54,9 @@ database.ref("/location").once("value", function(snapshot) {
 $(document).on("click", "#searchLocation", function() {
     event.preventDefault();
     address = $("#location").val();
+    resultsName = [];
+    resultsLat = [];
+    resultsLng = [];
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
@@ -64,7 +70,7 @@ $(document).on("click", "#searchLocation", function() {
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 10; i++) {
                 resultsName.push(response.response.venues[i].name);
                 resultsLat.push(response.response.venues[i].location.lat);
                 resultsLng.push(response.response.venues[i].location.lng);
@@ -78,32 +84,64 @@ $(document).on("click", "#searchLocation", function() {
             );
         });
     });
+  });
+
+    getNearestStation(searchLng, searchLat);
+
+    function clearMarkers() {
+        for (let i = 0; i < markerArr[i].length; i++) {
+            markerArr[i].setMap(null);
+        }
+        markerArr = [];
+    }
+  
+    clearMarkers();
+    $('ol').remove();
+    $('#listHolder').append($('<ol>'));
+  for (let i = 0; i < resultsLat.length; i++) {
+        let latlng = {lat: resultsLat[i], lng: resultsLng[i]}
+        let marker = new google.maps.Marker({
+        position: latlng,
+        label: `${i + 1}`,
+        map: map
+        });
+        markerArr.push(marker);
+        $('ol').append($(`<li>${resultsName[i]}</li>`));
+    }
+    for (let i = 0; i < resultsLat.length; i++) {
+        markerArr[i].setMap(map);
+    };
 });
 
-function initMap() {
-    //this functional has to match final call
-    let map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: searchLat, lng: searchLng },
-        zoom: 15,
-        zoomControl: true,
-        mapTypeControl: true,
-        mapTypeControlOptions: {
-            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-            position: google.maps.ControlPosition.TOP_CENTER
-        },
-        streetViewControl: true,
-        fullScreenControl: true
-    });
-    for (let i = resultsLat.length - 20; i < resultsLat.length; i++) {
-        let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
+
+function initMap() {   //this functional has to match final call
+  let map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: searchLat, lng: searchLng},
+    zoom: 15,
+    zoomControl: true,
+    mapTypeControl: false,
+    mapTypeControlOptions: {
+      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      position: google.maps.ControlPosition.TOP_CENTER
+    },
+    streetViewControl: true,
+    fullScreenControl: true
+  });
+  $('ol').empty();
+  for (let i = 0; i < resultsLat.length; i++) {
+        let latlng = {lat: resultsLat[i], lng: resultsLng[i]}
+
         let marker = new google.maps.Marker({
             position: latlng,
             label: `${i + 1}`,
             map: map
         });
-        marker.setMap(map);
-        $("ol").append($(`<li>${resultsName[i]}</li>`));
+        markerArr.push(marker);
+        $('ol').append($(`<li>${resultsName[i]}</li>`));
     }
+    for (let i = 0; i < resultsLat.length; i++) {
+        markerArr[i].setMap(map);
+    };
 }
 
 var trainRts = {
@@ -120,7 +158,6 @@ var trainRts = {
 var geoRaw = "https://data.cityofchicago.org/resource/8mj8-j3c4.json";
 
 function getNearestStation(xCoord, yCoord) {
-    console.log("calculating nearest station...");
 
     $.ajax({
         url: geoRaw,
@@ -146,18 +183,12 @@ function getNearestStation(xCoord, yCoord) {
                 indexNum = i;
             }
         }
-        console.log(maxDist);
-        console.log(indexNum);
-
-        console.log(response[indexNum]);
-        console.log(response[indexNum].map_id);
-
+       
         trainInfoGet(response[indexNum].map_id);
     });
 }
 
 function trainInfoGet(data) {
-    console.log("train clicked");
 
     var trainQueryRaw =
         "https://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=d6cb646a67d6448f8b58d7afb7ddb83c&mapid=" +
@@ -166,18 +197,13 @@ function trainInfoGet(data) {
 
     var trainQuery = "https://cors-anywhere.herokuapp.com/" + trainQueryRaw;
 
-    console.log(data);
 
     $.ajax({
         url: trainQuery,
         method: "GET"
     }).then(function(response) {
-        console.log(response);
 
-        console.log(response.ctatt.eta);
-        $("#train-table > tbody").empty();
         for (var i = 0; i < response.ctatt.eta.length; i++) {
-            console.log(response.ctatt.eta[i]);
 
             var trainSpec = response.ctatt.eta[i];
             var route = trainSpec.rt;
@@ -187,20 +213,13 @@ function trainInfoGet(data) {
 
             // spit out: a table with
             // station name / route / direction / next arrival
-            console.log(`Station: ${trainSpec.staNm}`);
-            console.log(`Route: ${trainRts[route]}`);
-            console.log(`Destination: ${trainSpec.destNm}`);
-            console.log(`Arrival time: ${arrTime}`);
-
-            console.log(now);
-            console.log(moment(trainSpec.arrT).format("HH:mm"));
+        
 
             var minToNext = moment(arrTime, "HH:mm").diff(
                 moment(now, "HH:mm"),
                 "minutes"
             );
 
-            console.log(`Minutes to next train: ${minToNext}`);
             // console.log(moment().diff(trainSpec.arrT), "minutes");
 
             // do this for all the things in the array
