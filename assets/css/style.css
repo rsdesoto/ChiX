@@ -81,3 +81,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* @media screen and (min-width: 769px) {} */
+
+#map {
+    height: 250px;
+    width: 250px;
+}
+
