@@ -16,5 +16,3 @@ var config = {
       address: $('#location').val()
     });
   });
-  
-  
