@@ -12,12 +12,13 @@ let database = firebase.database();
 
 let searchLat;
 let searchLng;
-let address = 'Chicago, Illinois';  //in case error occurs
+let address = "Chicago, Illinois"; //in case error occurs
 let resultsName = [];
 let resultsLat = [];
 let resultsLng = [];
 let query = 'coffee';
 let markerArr = [];
+
 
 
 database.ref("/location").once("value", function(snapshot) {
@@ -32,14 +33,18 @@ database.ref("/location").once("value", function(snapshot) {
         $.ajax({
             async: false,
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
-            method: 'GET'
+            method: "GET"
         }).then(function(response) {
             for (let i = 0; i < 10; i++) {
                 resultsName.push(response.response.venues[i].name);
                 resultsLat.push(response.response.venues[i].location.lat);
                 resultsLng.push(response.response.venues[i].location.lng);
             }
-            $('body').append($('<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'));
+            $("body").append(
+                $(
+                    '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'
+                )
+            );
             //https://www.html5rocks.com/en/tutorials/speed/script-loading/ idea for the above statement
         });
     });
@@ -56,23 +61,27 @@ $(document).on("click", "#searchLocation", function() {
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
         method: "GET"
     }).then(function(response) {
-
         searchLat = response.results[0].geometry.location.lat;
         searchLng = response.results[0].geometry.location.lng;
 
         $.ajax({
             async: false,
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
-            method: 'GET'
+            method: "GET"
         }).then(function(response) {
             for (let i = 0; i < 10; i++) {
                 resultsName.push(response.response.venues[i].name);
                 resultsLat.push(response.response.venues[i].location.lat);
                 resultsLng.push(response.response.venues[i].location.lng);
             }
-         getNearestStation(searchLng, searchLat);
-        $('#appendedScript').remove();
-        $('body').append($('<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'));
+            getNearestStation(searchLng, searchLat);
+            $("#appendedScript").remove();
+            $("body").append(
+                $(
+                    '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'
+                )
+            );
+        });
     });
   });
 
@@ -120,10 +129,11 @@ function initMap() {   //this functional has to match final call
   $('ol').empty();
   for (let i = 0; i < resultsLat.length; i++) {
         let latlng = {lat: resultsLat[i], lng: resultsLng[i]}
+
         let marker = new google.maps.Marker({
-        position: latlng,
-        label: `${i + 1}`,
-        map: map
+            position: latlng,
+            label: `${i + 1}`,
+            map: map
         });
         markerArr.push(marker);
         $('ol').append($(`<li>${resultsName[i]}</li>`));
@@ -131,9 +141,7 @@ function initMap() {   //this functional has to match final call
     for (let i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     };
-    console.log(resultsLat);
 }
-
 
 var trainRts = {
     Red: "Red Line",
@@ -147,7 +155,6 @@ var trainRts = {
 };
 
 var geoRaw = "https://data.cityofchicago.org/resource/8mj8-j3c4.json";
-
 
 function getNearestStation(xCoord, yCoord) {
 
@@ -194,7 +201,6 @@ function trainInfoGet(data) {
         url: trainQuery,
         method: "GET"
     }).then(function(response) {
-       
 
         for (var i = 0; i < response.ctatt.eta.length; i++) {
 
@@ -231,8 +237,3 @@ function trainInfoGet(data) {
         }
     });
 }
-
-$("#train-get").on("click", function() {
-    getNearestStation(xCoord, yCoord);
-});
-
