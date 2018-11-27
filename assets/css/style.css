@@ -1,7 +1,89 @@
 body {
-    height: 100%;
+  overflow: hidden;
+  background-image: url("../images/bean.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
 }
+.searchBar {
+  text-align: center;
+  color: white;
+  margin-top: 30px;
+  background-size: cover;
+  width: 100%;
+}
+input {
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  outline: none;
+  text-align: center;
+  height: 30p;
+
+  margin: 0 auto;
+  padding: 10px;
+  color: white;
+  -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
+.pageTitle {
+  text-align: center;
+  color: white;
+}
+.lead {
+  color: white;
+  text-align: center;
+}
+.card {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.searchButton {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+  margin-bottom: 200px;
+}
+
+/* @media screen and (min-width: 769px) {} */
+
 #map {
     height: 250px;
     width: 250px;
 }
+
