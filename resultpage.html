@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Explore Chicago</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/resultpage.css"/>
+
+</head>
+<body>
+    <!-- TITLE (ZIPCODE, DATE, TIME) -->
+ 
+    <div class="wrapper">
+    <header>
+        <div class="zoom">
+        <h1><a href ="#">User Input</a></h1>
+        </div>
+        <h2 id="currentDate">date & time</h1>
+
+    </header>
+
+    <div class="content-wrap">
+    <!-- CURRENT WEATHER DISPLAY-->  
+    <div class="wrapping">
+            <h3>Current Weather</h3>
+            <div class="currentWeather"></div>
+            <div class="collapsible sliding">
+
+    <!-- HOURLY FORECAST PLACEHOLDER-->
+              <h4 id="weatherCollapse">Hourly Forecast</h4>
+              <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Weather</th>
+                        <th scope="col">Temperature</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>3 PM</td>
+                        <td>Cloudy</td>
+                        <td>-3° C</td>
+                      </tr>
+                      <tr>
+                        <td>6 PM</td>
+                        <td>Cloudy</td>
+                        <td>2° C</td>
+                      </tr>
+                      <tr>
+                        <td>9 PM</td>
+                        <td>Thunderstorm</td>
+                        <td>8° C</td>
+                      </tr>
+                      <tr>
+                        <td>Midnight</td>
+                        <td>Thunderstorm</td>
+                        <td>8° C</td>
+                    </tr>
+                    <tr>
+                        <td>3 AM</td>
+                        <td>Thunderstorm</td>
+                        <td>8° C</td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <br>
+
+    <!-- WEEKLY FORECAST PLACEHOLDER-->
+            <div class="collapsible sliding">
+                    <h4 id="weatherCollapse">Weekly Forecast</h4>
+                    <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">Day</th>
+                                <th scope="col">Weather</th>
+                                <th scope="col">Temperature</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Wednesday</td>
+                                <td>Cloudy</td>
+                                <td>-3° C</td>
+                              </tr>
+                              <tr>
+                                <td>Thursday</td>
+                                <td>Cloudy</td>
+                                <td>2° C</td>
+                              </tr>
+                              <tr>
+                                <td>Friday</td>
+                                <td>Thunderstorm</td>
+                                <td>8° C</td>
+                              </tr>
+                              <tr>
+                                    <td>Saturday</td>
+                                    <td>Rain</td>
+                                    <td>4° C</td>
+                                  </tr>
+                                  <tr>
+                                        <td>Sunday</td>
+                                        <td>Cloudy</td>
+                                        <td>1° C</td>
+                                      </tr>
+                            </tbody>
+                          </table>
+                  </div>
+                </div>
+                
+<br>
+
+<!-- MAP & FOOD LIST -->
+<div class="wrapping">
+    <h3>Foods nearby</h3>
+    <div class="mapListWrapper">
+
+    <div id="googleMap">
+        map here
+    </div>
+
+    <div class="content-wrap">
+    <div id="listHolder">
+            <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                  </ul>
+                </div>
+    </div>
+    </div>
+</div>
+<br>
+<!-- TRAIN SCHEDULE -->
+<div class = "wrapping">
+    <h3>Train Schedule</h3> 
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Station</th>
+            <th scope="col">Route</th>
+            <th scope="col">Direction</th>
+            <th scope="col">Next Arrival</th>
+            <th scope="col">Next Train</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Morse</td>
+            <td>Red Line</td>
+            <td>95th/Dan Ryan</td>
+            <td>10:26</td>
+            <td>2 mins</td>
+          </tr>
+          <tr>
+                <td>Morse</td>
+                <td>Red Line</td>
+                <td>95th/Dan Ryan</td>
+                <td>10:26</td>
+                <td>2 mins</td>
+          </tr>
+          <tr>
+                <td>Morse</td>
+                <td>Red Line</td>
+                <td>95th/Dan Ryan</td>
+                <td>10:26</td>
+                <td>2 mins</td>
+          </tr>
+          <tr>
+                <td>Morse</td>
+                <td>Red Line</td>
+                <td>95th/Dan Ryan</td>
+                <td>10:26</td>
+                <td>2 mins</td>
+        </tr>
+        <tr>
+                <td>Morse</td>
+                <td>Red Line</td>
+                <td>95th/Dan Ryan</td>
+                <td>10:26</td>
+                <td>2 mins</td>
+            </tr>
+        </tbody>
+      </table>
+</div>
+</div>
+
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="assets/javascript/resultpage.js"></script>
+</body>
+</html>

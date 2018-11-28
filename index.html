@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,21 +34,25 @@
   <body>
     <div class="wrapper">
       <div class="content">
+
         <h1 class="pageTitle">Chi X</h1>
         <p class="lead">Experience Chicago to the fullest potential</p>
 
-        <form>
+        <form class="searchBar" action="./searchResults.html">
           <select id="selector">
             <option disabled selected>Select option</option>
-            <option value="0">Coffee</option>
-            <option value="1">Restaurants</option>
-            <option value="2">Bars</option>
+            <option value="Coffee">Coffee</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Bar">Bar</option>
           </select>
-          <input type="text" placeholder="Search address" />
-          <button class="searchButton"><i class="fas fa-search"></i></button>
+          <input id="location" type="text" placeholder="Search address" />
+          <button id="searchLocation" class="searchButton"><i class="fas fa-search"></i></button>
+
         </form>
       </div>
     </div>
     <script src="./assets/javascript/app.js"></script>
+
   </body>
+
 </html>
