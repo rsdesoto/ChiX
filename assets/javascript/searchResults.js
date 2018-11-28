@@ -24,10 +24,9 @@ let resultsId = [];
 $(document).on("change", ".drop", function() {
     query = $(this).val();
 });
-
-database.ref("/location").once("value", function(snapshot) {
-    address = snapshot.val().address;
-    query = snapshot.val().query;
+database.ref().once("value", function(snapshot) {
+    address = snapshot.val().location.address;
+    query = snapshot.val().query.query;
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
