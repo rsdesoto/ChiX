@@ -156,8 +156,18 @@ function initMap() {
             map: map
         });
         markerArr.push(marker);
-        $("#listHolder ol").append($(`<li>${resultsName[i]}<ul><li><a id='directionsLink' href='https://www.google.com/maps/place/${resultsAddress[i]}'>Directions</a></li><li><a id='fourSquareLink' href='https://foursquare.com/v/${resultsId[i]}'>FOURSQUARE</a></li></ul></li>`));
-}
+        $("#listHolder ol").append(
+            $(
+                `<li class="list-group-item">${
+                    resultsName[i]
+                }<ul><li><a id='directionsLink' href='https://www.google.com/maps/place/${
+                    resultsAddress[i]
+                }'>Directions</a></li><li><a id='fourSquareLink' href='https://foursquare.com/v/${
+                    resultsId[i]
+                }'>FOURSQUARE</a></li></ul></li>`
+            )
+        );
+    }
     for (let i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     }
