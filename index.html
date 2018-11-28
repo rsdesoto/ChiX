@@ -38,15 +38,19 @@
         <p class="lead">Our App's Description</p>
         
         <form class="searchBar" action="./searchResults.html">
-          <input id="location" type="number" placeholder="Search by zipcode" />
+          <select class="drop">
+            <option value="Coffee">Coffee</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Bar">Bar</option>
+        </select>
+          <input id="location" type="text" placeholder="Search" />
           <button id="searchLocation" class="searchButton"><i class="fas fa-search"></i></button>
         </form>
       </div>
     </div>
-    <!-- <script src="./assets/javascript/app.js"></script> -->
     <script src="./assets/javascript/app.js"></script>
-        <script src="./assets/javascript/geocoding.js"></script>
-        <script src="./assets/javascript/trainget.js"></script>
+    <script src="./assets/javascript/geocoding.js"></script>
+    <script src="./assets/javascript/trainget.js"></script>
   </body>
 
 </html>
