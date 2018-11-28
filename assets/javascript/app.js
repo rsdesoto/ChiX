@@ -10,9 +10,14 @@ var config = {
   
   let database = firebase.database();
   let firebaseLocation = database.ref('/location');
+
+  $(document).on("change", ".drop", function() {
+    queryVal = $(this).val();
+});
   
   $(document).on('click', '#searchLocation', function() {
     firebaseLocation.set({
-      address: $('#location').val()
+      address: $('#location').val(),
+      query: queryVal
     });
   });
