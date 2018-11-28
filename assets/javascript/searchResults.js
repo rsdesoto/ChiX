@@ -18,6 +18,8 @@ let resultsLat = [];
 let resultsLng = [];
 let query = "coffee";
 let markerArr = [];
+let resultsAddress = [];
+let resultsId = [];
 
 database.ref("/location").once("value", function(snapshot) {
     address = snapshot.val().address; //the last line of the search results html happens before this so an error occurs
@@ -37,6 +39,10 @@ database.ref("/location").once("value", function(snapshot) {
                 resultsName.push(response.response.venues[i].name);
                 resultsLat.push(response.response.venues[i].location.lat);
                 resultsLng.push(response.response.venues[i].location.lng);
+                resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
+                //makes a global replacement in the 
+                resultsId.push(response.response.venues[i].id);
+
             }
             $("body").append(
                 $(
@@ -44,6 +50,7 @@ database.ref("/location").once("value", function(snapshot) {
                 )
             );
             //https://www.html5rocks.com/en/tutorials/speed/script-loading/ idea for the above statement
+            //the script is appended to the body and runs when this occurs
         });
         getNearestStation(searchLng, searchLat);
     });
@@ -72,6 +79,8 @@ $(document).on("click", "#searchLocation", function() {
                 resultsName.push(response.response.venues[i].name);
                 resultsLat.push(response.response.venues[i].location.lat);
                 resultsLng.push(response.response.venues[i].location.lng);
+                resultsAddress.push(response.response.venues[i].location.address.replace(' ', '+'));
+                resultsId.push(response.response.venues[i].id);
             }
             getNearestStation(searchLng, searchLat);
             $("#appendedScript").remove();
@@ -83,28 +92,29 @@ $(document).on("click", "#searchLocation", function() {
         });
     });
 
-    // getNearestStation(searchLng, searchLat);
-
     function clearMarkers() {
         for (let i = 0; i < markerArr[i].length; i++) {
             markerArr[i].setMap(null);
+            //existing markers are set to null will still show if not
         }
-        markerArr = [];
+        markerArr = []; //markers are removed
     }
 
     clearMarkers();
     $("ol").remove();
     $("#listHolder").append($("<ol>"));
-    for (let i = 0; i < resultsLat.length; i++) {
-        let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
-        let marker = new google.maps.Marker({
-            position: latlng,
-            label: `${i + 1}`,
-            map: map
-        });
-        markerArr.push(marker);
-        $("ol").append($(`<li>${resultsName[i]}</li>`));
-    }
+    // for (let i = 0; i < resultsLat.length; i++) {
+    //     console.log('mp');
+    //     let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
+    //     let marker = new google.maps.Marker({
+    //         position: latlng,
+    //         label: `${i + 1}`,
+    //         map: map
+    //     });
+    //     console.log('hey');
+    //     $("ol").append($(`<a href='${resultsAddress[i]}'><li>${resultsName[i]}</li></a>`));
+    //     console.log(resultsAddress[i]);
+    // }
     for (let i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     }
@@ -133,9 +143,10 @@ function initMap() {
             label: `${i + 1}`,
             map: map
         });
+        // (`https://foursquare.com/v/${resultsId[i]}`);
         markerArr.push(marker);
-        $("ol").append($(`<li>${resultsName[i]}</li>`));
-    }
+        $("ol").append($(`<li>${resultsName[i]}<ul><li><a id='directionsLink' href='https://www.google.com/maps/place/${resultsAddress[i]}'>Directions</a></li><li><a id='fourSquareLink' href='https://foursquare.com/v/${resultsId[i]}'>FOURSQUARE</a></li></ul></li>`));
+}
     for (let i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     }
