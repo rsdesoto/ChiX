@@ -12,13 +12,13 @@ body {
 
 /* HEADER ZOOM IN HOVER */
 .zoom {
-    transition: transform .2s; /* Animation */
+    transition: transform 0.2s; /* Animation */
     margin: 10%;
     color: white;
     text-decoration: none;
 }
-.zoom:hover  {
-	-webkit-transform: scale(0.8);
+.zoom:hover {
+    -webkit-transform: scale(0.8);
     transform: scale(0.8);
 }
 /* HEADER */
@@ -76,88 +76,88 @@ h3 {
     font-weight: 300;
 }
 
-.wrapping{
-  position: relative;
-  top: 10%;
-  width:80%;
-  margin:0 auto;
+.wrapping {
+    position: relative;
+    top: 10%;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .collapsible {
-  background-color: rgba(255,255,255,0);
-  border-bottom: 1px solid #eee;
-  cursor: pointer;
-  color: #fff;
-  padding: 10px;
-  margin:0px;
-  max-height:40px;
-  overflow:hidden;
-  transition: all 0.4s;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px;
+    margin: 0px;
+    max-height: 40px;
+    overflow: hidden;
+    transition: all 0.4s;
 }
 
 .collapsible * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .collapsible.active {
-   background-color: rgba(255,255,255,0.6);
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-  z-index: 200;
-  color:#444;
-  max-height:3000px;
-  padding:10px 20px;
-  margin: 10px -10px;
-  transition: all 0.2s,max-height 4.8s;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    z-index: 200;
+    color: #444;
+    max-height: 3000px;
+    padding: 10px 20px;
+    margin: 10px -10px;
+    transition: all 0.2s, max-height 4.8s;
 }
 
 .collapsible h2 {
-  font-size: 18px;
-  line-height: 20px;
-  position:relative;
+    font-size: 18px;
+    line-height: 20px;
+    position: relative;
 }
 
 .sliding {
-  box-shadow:none !important;
-  margin:0px !important;
-  padding:10px !important
+    box-shadow: none !important;
+    margin: 0px !important;
+    padding: 10px !important;
 }
 
-.collapsible h2::after{
-  content: "+";
-  text-align:center;
-  position:absolute;
-  width:15px;
-  height:15px;
-  border:1px solid #ccc;
-  border-radius:50%;
-  font-size:12px;
-  line-height:15px;
-  opacity:0.5;
-  right:0;
-  top:0;
+.collapsible h2::after {
+    content: "+";
+    text-align: center;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 15px;
+    opacity: 0.5;
+    right: 0;
+    top: 0;
 }
 
-.collapsible:hover h2::after{
-  opacity:1
+.collapsible:hover h2::after {
+    opacity: 1;
 }
 
-.collapsible.active h2::after{
-  content: "-";
+.collapsible.active h2::after {
+    content: "-";
 }
 
-  * {
+* {
     box-sizing: border-box;
-  }
+}
 
 /* MAP & FOOD LIST*/
-#googleMap {
+/* #googleMap {
     background-color:white;
     opacity: 0.5;
     height: 100%;
     width: 100%;
-}
+} */
 
 .mapListWrapper {
     display: flex;
