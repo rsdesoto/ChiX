@@ -258,6 +258,14 @@ function trainInfoGet(data) {
 
 function WeatherFunction(){
 
+    var weatherQueryRaw1 = "api.openweathermap.org/data/2.5/weather?lat=41.8951430959825&lon=-87.62266159057619&units=imperial&APPID=91266e16eedc61cbd17d79ee410ef801"
+    var weatherQuery1 = "https://cors-anywhere.herokuapp.com/" + weatherQueryRaw1;
+    
+    var weatherQueryRaw =
+    "api.openweathermap.org/data/2.5/forecast?lat=41.8951430959825&lon=-87.62266159057619&units=imperial&APPID=91266e16eedc61cbd17d79ee410ef801";
+    
+    var weatherQuery = "https://cors-anywhere.herokuapp.com/" + weatherQueryRaw;    
+
     $.ajax({
         url:weatherQuery1,
         method: "GET" 
