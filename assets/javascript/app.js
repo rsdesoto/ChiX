@@ -9,17 +9,10 @@ var config = {
   firebase.initializeApp(config);
   
   let database = firebase.database();
-  let firebaseQuery = database.ref('/query');
   let firebaseLocation = database.ref('/location');
-
-  $(document).on("change", ".drop", function() {
-    firebaseQuery.set({
-      query: $(this).val()
-    })
-});
   
   $(document).on('click', '#searchLocation', function() {
     firebaseLocation.set({
-      address: $('#location').val(),
+      address: $('#location').val()
     });
   });
