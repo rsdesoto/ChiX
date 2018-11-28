@@ -45,7 +45,12 @@ database.ref().once("value", function(snapshot) {
                     resultsName.push(response.response.venues[i].name);
                     resultsLat.push(response.response.venues[i].location.lat);
                     resultsLng.push(response.response.venues[i].location.lng);
-                    resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
+                    resultsAddress.push(
+                        response.response.venues[i].location.address.replace(
+                            / /g,
+                            "+"
+                        )
+                    );
                     resultsId.push(response.response.venues[i].id);
                 } else {
                     totalResults++;
@@ -90,7 +95,12 @@ $(document).on("click", "#searchLocation", function() {
                     resultsName.push(response.response.venues[i].name);
                     resultsLat.push(response.response.venues[i].location.lat);
                     resultsLng.push(response.response.venues[i].location.lng);
-                    resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
+                    resultsAddress.push(
+                        response.response.venues[i].location.address.replace(
+                            / /g,
+                            "+"
+                        )
+                    );
                     resultsId.push(response.response.venues[i].id);
                 } else {
                     totalResults++;
@@ -158,8 +168,18 @@ function initMap() {
             map: map
         });
         markerArr.push(marker);
-        $("#listHolder ol").append($(`<li>${resultsName[i]}<ul><li><a id='directionsLink' href='https://www.google.com/maps/place/${resultsAddress[i]}'>Directions</a></li><li><a id='fourSquareLink' href='https://foursquare.com/v/${resultsId[i]}'>FOURSQUARE</a></li></ul></li>`));
-}
+        $("#listHolder ol").append(
+            $(
+                `<li class="list-group-item">${
+                    resultsName[i]
+                }<ul><li><a id='directionsLink' href='https://www.google.com/maps/place/${
+                    resultsAddress[i]
+                }'>Directions</a></li><li><a id='fourSquareLink' href='https://foursquare.com/v/${
+                    resultsId[i]
+                }'>FOURSQUARE</a></li></ul></li>`
+            )
+        );
+    }
     for (let i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     }
