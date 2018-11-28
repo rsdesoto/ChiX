@@ -280,9 +280,9 @@ function WeatherFunction(){
         console.log(response);
     
         
-            $(".currentTemp").text("Temp (F): " + response.main.temp);
-            $(".currentWind").text("Wind (mph): " + response.wind.speed);
-            $(".currentOutlook").text("Outlook: " + response.weather[0].description);
+            $("#currentTemp").text("Temp (F): " + response.main.temp);
+            $("#currentWind").text("Wind (mph): " + response.wind.speed);
+            $("#currentOutlook").text("Outlook: " + response.weather[0].description);
     
     });
     
@@ -306,10 +306,10 @@ function WeatherFunction(){
             var time = moment.utc(timeFrame.dt_txt).tz("America/Chicago").format("llll");
             var weatherDiv = $("<div>")
             var time = $("<h2>").text(time);
-            var tempMax = $("<text>").text("High (F): " + timeFrame.main.temp_max);
-            var tempMin = $("<text>").text(" Low : " + timeFrame.main.temp_min);
-            var wind = $("<text>").text(" Wind (mph): " + timeFrame.wind.speed);
-            var outlook = $("<text>").text(" Outlook: " + timeFrame.weather[0].description);
+            var tempMax = $("<td>").text("High (F): " + timeFrame.main.temp_max);
+            var tempMin = $("<td>").text(" Low : " + timeFrame.main.temp_min);
+            var wind = $("<td>").text(" Wind (mph): " + timeFrame.wind.speed);
+            var outlook = $("<td>").text(" Outlook: " + timeFrame.weather[0].description);
     
             weatherDiv.append(time);
             weatherDiv.append(tempMax);
