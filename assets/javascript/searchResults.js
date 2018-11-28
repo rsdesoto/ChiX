@@ -24,6 +24,22 @@ let resultsId = [];
 $(document).on("change", ".drop", function() {
     query = $(this).val();
 });
+
+const printResults = response => {
+    let totalResults = 10;
+    for (let i = 0; i < totalResults; i++) {
+        if (response.response.venues[i].location.address) {
+            resultsName.push(response.response.venues[i].name);
+            resultsLat.push(response.response.venues[i].location.lat);
+            resultsLng.push(response.response.venues[i].location.lng);
+            resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
+            resultsId.push(response.response.venues[i].id);
+        } else {
+            totalResults++;
+        }
+    }
+}
+
 database.ref().once("value", function(snapshot) {
     address = snapshot.val().location.address;
     query = snapshot.val().query.query;
@@ -39,18 +55,7 @@ database.ref().once("value", function(snapshot) {
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
-            let totalResults = 10;
-            for (let i = 0; i < totalResults; i++) {
-                if (response.response.venues[i].location.address) {
-                    resultsName.push(response.response.venues[i].name);
-                    resultsLat.push(response.response.venues[i].location.lat);
-                    resultsLng.push(response.response.venues[i].location.lng);
-                    resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
-                    resultsId.push(response.response.venues[i].id);
-                } else {
-                    totalResults++;
-                }
-            }
+            printResults(response);
             $("body").append(
                 $(
                     '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'
@@ -85,18 +90,7 @@ $(document).on("click", "#searchLocation", function() {
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
-            let totalResults = 10;
-            for (let i = 0; i < totalResults; i++) {
-                if (response.response.venues[i].location.address) {
-                    resultsName.push(response.response.venues[i].name);
-                    resultsLat.push(response.response.venues[i].location.lat);
-                    resultsLng.push(response.response.venues[i].location.lng);
-                    resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
-                    resultsId.push(response.response.venues[i].id);
-                } else {
-                    totalResults++;
-                }
-            }
+            printResults(response);
             getNearestStation(searchLng, searchLat);
             WeatherFunction()
             $("#appendedScript").remove();
@@ -107,6 +101,8 @@ $(document).on("click", "#searchLocation", function() {
             );
         });
     });
+
+    
 
     function clearMarkers() {
         for (let i = 0; i < markerArr[i].length; i++) {
