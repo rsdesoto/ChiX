@@ -37,192 +37,193 @@
             <header>
                 <div class="zoom">
                     <h1><a href="#">User Input</a></h1>
-                    <form>
-                        <select class="drop">
-                            <option value="Coffee">Coffee</option>
-                            <option value="Restaurant">Restaurant</option>
-                            <option value="Bar">Bar</option>
-                        </select>
-                        <input id="location" />
-                        <button id="searchLocation">Search</button>
-                    </form>
                 </div>
+                <form>
+                    <select class="drop">
+                        <option value="Coffee">Coffee</option>
+                        <option value="Restaurant">Restaurant</option>
+                        <option value="Bar">Bar</option>
+                    </select>
+                    <input id="location" />
+                    <button id="searchLocation">Search</button>
+                </form>
                 <h2 id="currentDate">date & time</h2>
             </header>
-
-            <div class="content-wrap">
-                <!-- CURRENT WEATHER DISPLAY -->
-                <div class="wrapping">
-                    <h3>Current Weather</h3>
-                    <div class="currentWeather"></div>
-                    <div class="collapsible sliding">
-                        <!-- HOURLY FORECAST PLACEHOLDER -->
-                        <h4 id="weatherCollapse">Hourly Forecast</h4>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Weather</th>
-                                    <th scope="col">Temperature</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>3 PM</td>
-                                    <td>Cloudy</td>
-                                    <td>-3° C</td>
-                                </tr>
-                                <tr>
-                                    <td>6 PM</td>
-                                    <td>Cloudy</td>
-                                    <td>2° C</td>
-                                </tr>
-                                <tr>
-                                    <td>9 PM</td>
-                                    <td>Thunderstorm</td>
-                                    <td>8° C</td>
-                                </tr>
-                                <tr>
-                                    <td>Midnight</td>
-                                    <td>Thunderstorm</td>
-                                    <td>8° C</td>
-                                </tr>
-                                <tr>
-                                    <td>3 AM</td>
-                                    <td>Thunderstorm</td>
-                                    <td>8° C</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <br />
-
-                    <!-- WEEKLY FORECAST PLACEHOLDER -->
-                    <div class="collapsible sliding">
-                        <h4 id="weatherCollapse">Weekly Forecast</h4>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Day</th>
-                                    <th scope="col">Weather</th>
-                                    <th scope="col">Temperature</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Wednesday</td>
-                                    <td>Cloudy</td>
-                                    <td>-3° C</td>
-                                </tr>
-                                <tr>
-                                    <td>Thursday</td>
-                                    <td>Cloudy</td>
-                                    <td>2° C</td>
-                                </tr>
-                                <tr>
-                                    <td>Friday</td>
-                                    <td>Thunderstorm</td>
-                                    <td>8° C</td>
-                                </tr>
-                                <tr>
-                                    <td>Saturday</td>
-                                    <td>Rain</td>
-                                    <td>4° C</td>
-                                </tr>
-                                <tr>
-                                    <td>Sunday</td>
-                                    <td>Cloudy</td>
-                                    <td>1° C</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MAP & FOOD LIST -->
-            <div class="wrapping">
-                <h3>Foods nearby</h3>
-                <div class="mapListWrapper">
-                    <div id="map">map here</div>
-
-                    <div class="content-wrap">
-                        <div id="listHolder"><ol></ol></div>
-                        <!--
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Cras justo odio</li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                </li>
-                                <li class="list-group-item">Morbi leo risus</li>
-                                <li class="list-group-item">
-                                    Porta ac consectetur ac
-                                </li>
-                                <li class="list-group-item">
-                                    Vestibulum at eros
-                                </li>
-                                <li class="list-group-item">Cras justo odio</li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                </li>
-                                <li class="list-group-item">Morbi leo risus</li>
-                                <li class="list-group-item">
-                                    Porta ac consectetur ac
-                                </li>
-                                <li class="list-group-item">
-                                    Vestibulum at eros
-                                </li>
-                                <li class="list-group-item">Cras justo odio</li>
-                                <li class="list-group-item">
-                                    Dapibus ac facilisis in
-                                </li>
-                                <li class="list-group-item">Morbi leo risus</li>
-                                <li class="list-group-item">
-                                    Porta ac consectetur ac
-                                </li>
-                                <li class="list-group-item">
-                                    Vestibulum at eros
-                                </li>
-                            </ul>
-                        -->
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- TRAIN SCHEDULE -->
-            <div class="wrapping">
-                <h3>Train Schedule</h3>
-
-                <table class="table table-striped" id="train-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Station</th>
-                            <th scope="col">Route</th>
-                            <th scope="col">Direction</th>
-                            <th scope="col">Next Arrival</th>
-                            <th scope="col">Next Train</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-
-            <!--
-                <table class="table table-sm table-hover" id="train-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Station Name</th>
-                            <th scope="col">Route</th>
-                            <th scope="col">Direction</th>
-                            <th scope="col">Next Arrival Time</th>
-                            <th scope="col">Next Arrival</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            -->
         </div>
+
+        <div class="content-wrap">
+            <!-- CURRENT WEATHER DISPLAY -->
+            <div class="wrapping">
+                <h3>Current Weather</h3>
+                <div class="currentWeather"></div>
+                <div class="collapsible sliding">
+                    <!-- HOURLY FORECAST PLACEHOLDER -->
+                    <h4 id="weatherCollapse">Hourly Forecast</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Time</th>
+                                <th scope="col">Weather</th>
+                                <th scope="col">Temperature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3 PM</td>
+                                <td>Cloudy</td>
+                                <td>-3° C</td>
+                            </tr>
+                            <tr>
+                                <td>6 PM</td>
+                                <td>Cloudy</td>
+                                <td>2° C</td>
+                            </tr>
+                            <tr>
+                                <td>9 PM</td>
+                                <td>Thunderstorm</td>
+                                <td>8° C</td>
+                            </tr>
+                            <tr>
+                                <td>Midnight</td>
+                                <td>Thunderstorm</td>
+                                <td>8° C</td>
+                            </tr>
+                            <tr>
+                                <td>3 AM</td>
+                                <td>Thunderstorm</td>
+                                <td>8° C</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+
+                <!-- WEEKLY FORECAST PLACEHOLDER -->
+                <div class="collapsible sliding">
+                    <h4 id="weatherCollapse">Weekly Forecast</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Day</th>
+                                <th scope="col">Weather</th>
+                                <th scope="col">Temperature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>Cloudy</td>
+                                <td>-3° C</td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>Cloudy</td>
+                                <td>2° C</td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>Thunderstorm</td>
+                                <td>8° C</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>Rain</td>
+                                <td>4° C</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>Cloudy</td>
+                                <td>1° C</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAP & FOOD LIST -->
+        <div class="wrapping">
+            <h3>Foods nearby</h3>
+            <div class="mapListWrapper">
+                <div id="map">map here</div>
+
+                <div class="content-wrap">
+                    <div id="listHolder"><ol></ol></div>
+                    <!--
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">
+                                Dapibus ac facilisis in
+                            </li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">
+                                Porta ac consectetur ac
+                            </li>
+                            <li class="list-group-item">
+                                Vestibulum at eros
+                            </li>
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">
+                                Dapibus ac facilisis in
+                            </li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">
+                                Porta ac consectetur ac
+                            </li>
+                            <li class="list-group-item">
+                                Vestibulum at eros
+                            </li>
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">
+                                Dapibus ac facilisis in
+                            </li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">
+                                Porta ac consectetur ac
+                            </li>
+                            <li class="list-group-item">
+                                Vestibulum at eros
+                            </li>
+                        </ul>
+                    -->
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TRAIN SCHEDULE -->
+        <div class="wrapping">
+            <h3>Train Schedule</h3>
+
+            <table class="table table-striped" id="train-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Station</th>
+                        <th scope="col">Route</th>
+                        <th scope="col">Direction</th>
+                        <th scope="col">Next Arrival</th>
+                        <th scope="col">Next Train</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!--
+            <table class="table table-sm table-hover" id="train-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Station Name</th>
+                        <th scope="col">Route</th>
+                        <th scope="col">Direction</th>
+                        <th scope="col">Next Arrival Time</th>
+                        <th scope="col">Next Arrival</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        -->
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
         <script src="./assets/javascript/searchResults.js"></script>
     </body>
