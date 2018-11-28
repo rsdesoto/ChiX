@@ -14,6 +14,8 @@ This is an app to fetch, from a search, nearby restaurants and cafes, nearest CT
 
 ### Credits
 
+Firebase used to pass information between pages
+
 APIs used:
 
 -   [Chicago Data Portal - CTA Datasets](https://data.cityofchicago.org/Transportation/CTA-List-of-CTA-Datasets/pnau-cf66) - The "System Information - List of L Stops"
