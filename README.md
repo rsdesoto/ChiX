@@ -19,7 +19,9 @@ APIs used:
 -   [Chicago Data Portal - CTA Datasets](https://data.cityofchicago.org/Transportation/CTA-List-of-CTA-Datasets/pnau-cf66) - The "System Information - List of L Stops"
 -   [CTA Train Tracker](https://www.transitchicago.com/developers/traintracker/)
 -   [Foursquare](https://developer.foursquare.com/)
--   [Google Maps](https://developers.google.com/maps/documentation/) - include specifics
+-   [Google Maps](https://developers.google.com/maps/documentation/)
+    -   [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+    -   [Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 -   [OpenWeatherMap](https://openweathermap.org/api) - Current Weather Data and 5 day/3 hour forecast
 
 ### Presentation (tbd)
