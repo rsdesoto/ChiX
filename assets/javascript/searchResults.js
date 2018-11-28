@@ -60,6 +60,7 @@ database.ref().once("value", function(snapshot) {
             //the script is appended to the body and runs when this occurs
         });
         getNearestStation(searchLng, searchLat);
+        WeatherFunction()
     });
 });
 
@@ -97,6 +98,7 @@ $(document).on("click", "#searchLocation", function() {
                 }
             }
             getNearestStation(searchLng, searchLat);
+            WeatherFunction()
             $("#appendedScript").remove();
             $("body").append(
                 $(
@@ -253,3 +255,62 @@ function trainInfoGet(data) {
         }
     });
 }
+
+function WeatherFunction(){
+
+    $.ajax({
+        url:weatherQuery1,
+        method: "GET" 
+    })
+    .then(function(response){
+        console.log(response);
+    
+        
+            $(".currentTemp").text("Temp (F): " + response.main.temp);
+            $(".currentWind").text("Wind (mph): " + response.wind.speed);
+            $(".currentOutlook").text("Outlook: " + response.weather[0].description);
+    
+    });
+    
+    
+    $.ajax({
+        url: weatherQuery,
+        method: "GET"
+    })
+    .then(function(response) {
+        console.log(weatherQuery);
+        console.log(response);
+        console.log(response.list);
+    
+        var weatherList = response.list
+        var weather = response
+        console.log(weatherList)
+    
+        $(".City").html("<h1> Current " + weather.city.name + " Weather</h1>");
+    
+        weatherList.forEach(timeFrame => {
+            var time = moment.utc(timeFrame.dt_txt).tz("America/Chicago").format("llll");
+            var weatherDiv = $("<div>")
+            var time = $("<h2>").text(time);
+            var tempMax = $("<text>").text("High (F): " + timeFrame.main.temp_max);
+            var tempMin = $("<text>").text(" Low : " + timeFrame.main.temp_min);
+            var wind = $("<text>").text(" Wind (mph): " + timeFrame.wind.speed);
+            var outlook = $("<text>").text(" Outlook: " + timeFrame.weather[0].description);
+    
+            weatherDiv.append(time);
+            weatherDiv.append(tempMax);
+            weatherDiv.append(tempMin);
+            weatherDiv.append(wind);
+            weatherDiv.append(outlook)
+            $(".forecastTime").append(weatherDiv);
+            $(".forecastTempMax").append(weatherDiv);
+            $(".forecastTempMin").append(weatherDiv);
+            $(".forecastWind").append(weatherDiv);
+            $(".forecastOutlook").append(weatherDiv);
+       
+        });
+        
+    });
+    }
+    
+    
