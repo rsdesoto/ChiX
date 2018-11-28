@@ -19,6 +19,8 @@ let resultsLng = [];
 // let query = "coffee";
 let query;
 let markerArr = [];
+let resultsAddress = [];
+let resultsId = [];
 
 $(document).on("change", ".drop", function() {
     console.log("hello");
@@ -41,10 +43,17 @@ database.ref("/location").once("value", function(snapshot) {
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
-            for (let i = 0; i < 10; i++) {
-                resultsName.push(response.response.venues[i].name);
-                resultsLat.push(response.response.venues[i].location.lat);
-                resultsLng.push(response.response.venues[i].location.lng);
+            let totalResults = 10;
+            for (let i = 0; i < totalResults; i++) {
+                if (response.response.venues[i].location.address) {
+                    resultsName.push(response.response.venues[i].name);
+                    resultsLat.push(response.response.venues[i].location.lat);
+                    resultsLng.push(response.response.venues[i].location.lng);
+                    resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
+                    resultsId.push(response.response.venues[i].id);
+                } else {
+                    totalResults++;
+                }
             }
             $("body").append(
                 $(
@@ -52,6 +61,7 @@ database.ref("/location").once("value", function(snapshot) {
                 )
             );
             //https://www.html5rocks.com/en/tutorials/speed/script-loading/ idea for the above statement
+            //the script is appended to the body and runs when this occurs
         });
         getNearestStation(searchLng, searchLat);
     });
@@ -63,6 +73,8 @@ $(document).on("click", "#searchLocation", function() {
     resultsName = [];
     resultsLat = [];
     resultsLng = [];
+    resultsAddress = [];
+    resultsId = [];
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
@@ -76,10 +88,17 @@ $(document).on("click", "#searchLocation", function() {
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
-            for (let i = 0; i < 10; i++) {
-                resultsName.push(response.response.venues[i].name);
-                resultsLat.push(response.response.venues[i].location.lat);
-                resultsLng.push(response.response.venues[i].location.lng);
+            let totalResults = 10;
+            for (let i = 0; i < totalResults; i++) {
+                if (response.response.venues[i].location.address) {
+                    resultsName.push(response.response.venues[i].name);
+                    resultsLat.push(response.response.venues[i].location.lat);
+                    resultsLng.push(response.response.venues[i].location.lng);
+                    resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
+                    resultsId.push(response.response.venues[i].id);
+                } else {
+                    totalResults++;
+                }
             }
             getNearestStation(searchLng, searchLat);
             $("#appendedScript").remove();
@@ -91,28 +110,29 @@ $(document).on("click", "#searchLocation", function() {
         });
     });
 
-    // getNearestStation(searchLng, searchLat);
-
     function clearMarkers() {
         for (let i = 0; i < markerArr[i].length; i++) {
             markerArr[i].setMap(null);
+            //existing markers are set to null will still show if not
         }
-        markerArr = [];
+        markerArr = []; //markers are removed
     }
 
     clearMarkers();
     $("ol").remove();
     $("#listHolder").append($("<ol>"));
-    for (let i = 0; i < resultsLat.length; i++) {
-        let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
-        let marker = new google.maps.Marker({
-            position: latlng,
-            label: `${i + 1}`,
-            map: map
-        });
-        markerArr.push(marker);
-        $("ol").append($(`<li>${resultsName[i]}</li>`));
-    }
+    // for (let i = 0; i < resultsLat.length; i++) {
+    //     console.log('mp');
+    //     let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
+    //     let marker = new google.maps.Marker({
+    //         position: latlng,
+    //         label: `${i + 1}`,
+    //         map: map
+    //     });
+    //     console.log('hey');
+    //     $("ol").append($(`<a href='${resultsAddress[i]}'><li>${resultsName[i]}</li></a>`));
+    //     console.log(resultsAddress[i]);
+    // }
     for (let i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     }
@@ -132,7 +152,7 @@ function initMap() {
         streetViewControl: true,
         fullScreenControl: true
     });
-    $("ol").empty();
+    $("#listHolder ol").empty();
     for (let i = 0; i < resultsLat.length; i++) {
         let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
 
@@ -142,8 +162,8 @@ function initMap() {
             map: map
         });
         markerArr.push(marker);
-        $("ol").append($(`<li>${resultsName[i]}</li>`));
-    }
+        $("#listHolder ol").append($(`<li>${resultsName[i]}<ul><li><a id='directionsLink' href='https://www.google.com/maps/place/${resultsAddress[i]}'>Directions</a></li><li><a id='fourSquareLink' href='https://foursquare.com/v/${resultsId[i]}'>FOURSQUARE</a></li></ul></li>`));
+}
     for (let i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     }
