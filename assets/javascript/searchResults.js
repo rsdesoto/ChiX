@@ -21,12 +21,8 @@ let markerArr = [];
 let resultsAddress = [];
 let resultsId = [];
 
-$(document).on("change", ".drop", function() {
-    query = $(this).val();
-});
-
 const printResults = response => {
-    let totalResults = 10;
+    let totalResults = 30;
     for (let i = 0; i < totalResults; i++) {
         if (response.response.venues[i].location.address) {
             resultsName.push(response.response.venues[i].name);
@@ -77,6 +73,7 @@ $(document).on("click", "#searchLocation", function() {
     resultsLng = [];
     resultsAddress = [];
     resultsId = [];
+    query = $('.drop').val();
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
