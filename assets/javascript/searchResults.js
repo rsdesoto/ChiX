@@ -24,6 +24,22 @@ let resultsId = [];
 $(document).on("change", ".drop", function() {
     query = $(this).val();
 });
+
+const printResults = response => {
+    let totalResults = 10;
+    for (let i = 0; i < totalResults; i++) {
+        if (response.response.venues[i].location.address) {
+            resultsName.push(response.response.venues[i].name);
+            resultsLat.push(response.response.venues[i].location.lat);
+            resultsLng.push(response.response.venues[i].location.lng);
+            resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
+            resultsId.push(response.response.venues[i].id);
+        } else {
+            totalResults++;
+        }
+    }
+}
+
 database.ref().once("value", function(snapshot) {
     address = snapshot.val().location.address;
     query = snapshot.val().query.query;
@@ -39,23 +55,7 @@ database.ref().once("value", function(snapshot) {
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
-            let totalResults = 10;
-            for (let i = 0; i < totalResults; i++) {
-                if (response.response.venues[i].location.address) {
-                    resultsName.push(response.response.venues[i].name);
-                    resultsLat.push(response.response.venues[i].location.lat);
-                    resultsLng.push(response.response.venues[i].location.lng);
-                    resultsAddress.push(
-                        response.response.venues[i].location.address.replace(
-                            / /g,
-                            "+"
-                        )
-                    );
-                    resultsId.push(response.response.venues[i].id);
-                } else {
-                    totalResults++;
-                }
-            }
+            printResults(response);
             $("body").append(
                 $(
                     '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'
@@ -65,6 +65,7 @@ database.ref().once("value", function(snapshot) {
             //the script is appended to the body and runs when this occurs
         });
         getNearestStation(searchLng, searchLat);
+        WeatherFunction()
     });
 });
 
@@ -89,24 +90,9 @@ $(document).on("click", "#searchLocation", function() {
             url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
-            let totalResults = 10;
-            for (let i = 0; i < totalResults; i++) {
-                if (response.response.venues[i].location.address) {
-                    resultsName.push(response.response.venues[i].name);
-                    resultsLat.push(response.response.venues[i].location.lat);
-                    resultsLng.push(response.response.venues[i].location.lng);
-                    resultsAddress.push(
-                        response.response.venues[i].location.address.replace(
-                            / /g,
-                            "+"
-                        )
-                    );
-                    resultsId.push(response.response.venues[i].id);
-                } else {
-                    totalResults++;
-                }
-            }
+            printResults(response);
             getNearestStation(searchLng, searchLat);
+            WeatherFunction()
             $("#appendedScript").remove();
             $("body").append(
                 $(
@@ -115,6 +101,8 @@ $(document).on("click", "#searchLocation", function() {
             );
         });
     });
+
+    
 
     function clearMarkers() {
         for (let i = 0; i < markerArr[i].length; i++) {
@@ -273,3 +261,62 @@ function trainInfoGet(data) {
         }
     });
 }
+
+function WeatherFunction(){
+
+    $.ajax({
+        url:weatherQuery1,
+        method: "GET" 
+    })
+    .then(function(response){
+        console.log(response);
+    
+        
+            $(".currentTemp").text("Temp (F): " + response.main.temp);
+            $(".currentWind").text("Wind (mph): " + response.wind.speed);
+            $(".currentOutlook").text("Outlook: " + response.weather[0].description);
+    
+    });
+    
+    
+    $.ajax({
+        url: weatherQuery,
+        method: "GET"
+    })
+    .then(function(response) {
+        console.log(weatherQuery);
+        console.log(response);
+        console.log(response.list);
+    
+        var weatherList = response.list
+        var weather = response
+        console.log(weatherList)
+    
+        $(".City").html("<h1> Current " + weather.city.name + " Weather</h1>");
+    
+        weatherList.forEach(timeFrame => {
+            var time = moment.utc(timeFrame.dt_txt).tz("America/Chicago").format("llll");
+            var weatherDiv = $("<div>")
+            var time = $("<h2>").text(time);
+            var tempMax = $("<text>").text("High (F): " + timeFrame.main.temp_max);
+            var tempMin = $("<text>").text(" Low : " + timeFrame.main.temp_min);
+            var wind = $("<text>").text(" Wind (mph): " + timeFrame.wind.speed);
+            var outlook = $("<text>").text(" Outlook: " + timeFrame.weather[0].description);
+    
+            weatherDiv.append(time);
+            weatherDiv.append(tempMax);
+            weatherDiv.append(tempMin);
+            weatherDiv.append(wind);
+            weatherDiv.append(outlook)
+            $(".forecastTime").append(weatherDiv);
+            $(".forecastTempMax").append(weatherDiv);
+            $(".forecastTempMin").append(weatherDiv);
+            $(".forecastWind").append(weatherDiv);
+            $(".forecastOutlook").append(weatherDiv);
+       
+        });
+        
+    });
+    }
+    
+    
