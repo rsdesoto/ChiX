@@ -16,11 +16,19 @@ let address = "Chicago, Illinois"; //in case error occurs
 let resultsName = [];
 let resultsLat = [];
 let resultsLng = [];
-let query = "coffee";
+// let query = "coffee";
+let query;
 let markerArr = [];
+
+$(document).on("change", ".drop", function() {
+    console.log("hello");
+    console.log($(this).val());
+    query = $(this).val();
+});
 
 database.ref("/location").once("value", function(snapshot) {
     address = snapshot.val().address; //the last line of the search results html happens before this so an error occurs
+    query = "coffee"; // placeholder for page load
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,

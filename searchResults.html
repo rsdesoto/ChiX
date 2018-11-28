@@ -6,31 +6,38 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Search Results</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--         <link
-            rel="stylesheet"
-            type="text/css"
-            media="screen"
-            href="./assets/css/style.css"
-        /> -->
+        <!--
+            <link
+                rel="stylesheet"
+                type="text/css"
+                media="screen"
+                href="./assets/css/style.css"
+            />
+        -->
         <link
             rel="stylesheet"
             type="text/css"
             media="screen"
-            href="./assets/css/map.css">
+            href="./assets/css/map.css"
+        />
         <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"
         ></script>
         <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <form>
-        <input id='location'>
-        <button id='searchLocation'>Search</button>
-    </form>
-    <div id="map"></div>
-    <div id='listHolder'>
-        <ol></ol>
-    </div>
+    </head>
+    <body>
+        <form>
+            <select class="drop">
+                <option value="Coffee">Coffee</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Bar">Bar</option>
+            </select>
+            <input id="location" /> <button id="searchLocation">Search</button>
+        </form>
+        <div id="map"></div>
+        <div id="listHolder"><ol></ol></div>
         <table class="table table-sm table-hover" id="train-table">
             <thead>
                 <tr>
