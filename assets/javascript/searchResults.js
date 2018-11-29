@@ -24,28 +24,28 @@ var config = {
 };
 firebase.initializeApp(config);
 
-let database = firebase.database();
+var database = firebase.database();
 
 /** **************************************************************************************** */
 /** Global variables */
 /** **************************************************************************************** */
 
-let searchLat;
-let searchLng;
-let address;
-let resultsName = [];
-let resultsLat = [];
-let resultsLng = [];
-let query;
-let markerArr = [];
-let resultsAddress = [];
-let resultsId = [];
+var searchLat;
+var searchLng;
+var address;
+var resultsName = [];
+var resultsLat = [];
+var resultsLng = [];
+var query;
+var markerArr = [];
+var resultsAddress = [];
+var resultsId = [];
 
 /** API for CTA stations */
-let geoRaw = "https://data.cityofchicago.org/resource/8mj8-j3c4.json";
+var geoRaw = "https://data.cityofchicago.org/resource/8mj8-j3c4.json";
 
 /** object for moving from the CTA's abbreviations to the full name of each CTA line */
-let trainRts = {
+var trainRts = {
     Red: "Red Line",
     P: "Purple Line",
     Y: "Yellow Line",
@@ -64,7 +64,7 @@ let trainRts = {
  * Clear markers from the Google map. Used for each gmaps/FOURSQUARE query to remove previous search pins.
  */
 function clearMarkers() {
-    for (let i = 0; i < markerArr[i].length; i++) {
+    for (var i = 0; i < markerArr[i].length; i++) {
         markerArr[i].setMap(null);
         //existing markers are set to null will still show if not
     }
@@ -75,8 +75,8 @@ function clearMarkers() {
  * Once the list of near locations has been pulled from FOURSQUARE, output into a nice looking, well-formatted list.
  * @param {array} response - the results from the FOURSQUARE query
  */
-const printResults = response => {
-    for (let i = 0; i < response.response.groups[0].items.length; i++) {
+function printResults(response) {
+    for (var i = 0; i < response.response.groups[0].items.length; i++) {
         if (response.response.groups[0].items[i].venue.location.address) {
             resultsName.push(response.response.groups[0].items[i].venue.name);
             resultsLat.push(
@@ -104,7 +104,7 @@ const printResults = response => {
  */
 function initMap() {
     //this functional has to match final call
-    let map = new google.maps.Map(document.getElementById("map"), {
+    var map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: searchLat, lng: searchLng },
         zoom: 15,
         zoomControl: true,
@@ -117,10 +117,10 @@ function initMap() {
         fullScreenControl: true
     });
     $("#listHolder ol").empty();
-    for (let i = 0; i < resultsLat.length; i++) {
-        let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
+    for (var i = 0; i < resultsLat.length; i++) {
+        var latlng = { lat: resultsLat[i], lng: resultsLng[i] };
 
-        let marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
             position: latlng,
             label: `${i + 1}`,
             map: map
@@ -138,7 +138,7 @@ function initMap() {
             )
         );
     }
-    for (let i = 0; i < resultsLat.length; i++) {
+    for (var i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     }
 }
@@ -399,7 +399,7 @@ $(document).on("click", "#searchLocation", function() {
 
     $("ol").remove();
     $("#listHolder").append($("<ol>"));
-    for (let i = 0; i < resultsLat.length; i++) {
+    for (var i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     }
 });
