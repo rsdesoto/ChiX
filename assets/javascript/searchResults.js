@@ -353,7 +353,7 @@ database.ref().once("value", function(snapshot) {
  * firebase database. Then, once firebase has been updated, update the Google map, FOURSQUARE results, clear markers, and
  * set markers.
  */
-$(document).on("click", "#searchLocation", function() {
+$(document).on("click", "#searchLocation", function(event) {
     event.preventDefault();
     address = $("#location").val();
     resultsName = [];
