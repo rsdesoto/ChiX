@@ -5,14 +5,15 @@ body {
     background-attachment: fixed;
     background-position: no-repeat;
     width: 100vw;
-
     background-size: cover;
     overflow: scroll;
+    background-color: rgba(14, 39, 68, 0.2);
+    background-blend-mode: darken;
 }
 
 #searchWrap {
-    display: inline-block;
-    margin-left: -40%;
+    display: block;
+/*     margin-left: -40%; */
 }
 
 /* HEADER ZOOM IN HOVER */
@@ -247,9 +248,7 @@ a:hover {
 }
 
 .list-group-flush {
-    /* padding-left: 10px; */
     opacity: 0.7;
-    /* width: 300px; */
 }
 
 /* TRAIN SCHEDULE BACKGROUND */
@@ -257,3 +256,33 @@ a:hover {
     background-color: white;
     opacity: 0.7;
 }
+
+/***** FOOTER *****/
+footer {
+  color: white;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 425px) {
+    #headerGridContainer {
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: 100%;
+        position: relative;
+        justify-content: center !important;
+    }
+
+    #headerFirstRow {
+        grid-row: 1;
+    }
+    
+    #headerSecondRow {
+        grid-row: 2;
+    }
+    
+    #headerThirdRow {
+        grid-row: 3;
+    }
+}
+
+
+
