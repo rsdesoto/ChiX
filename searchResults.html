@@ -18,6 +18,12 @@
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
             crossorigin="anonymous"
         />
+        <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous"
+      />
         <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -36,22 +42,23 @@
         <div class="wrapper">
             <header>
                 <div class="zoom">
-                    <h1><a href="#">User Input</a></h1>
+                    <h1><a href="./index.html" id="titleStyle">User Input</a></h1>
                 </div>
-                <form>
-                    <select class="drop">
-                        <option disabled selected>Select option</option>
-                        <option value="Arts">Arts</option>
-                        <option value="Coffee">Coffee</option>
-                        <option value="Drinks">Drinks</option>
-                        <option value="Food">Food</option>
-                        <option value="Outdoors">Outdoors</option>
-                        <option value="Sights">Sights</option>
-                        <option value="Trending">Trending</option>
+                <form class="searchBar" action="./searchResults.html">
+                    <select id="selector">
+                      <option disabled selected>Select option</option>
+                      <option value="Arts">Arts</option>
+                      <option value="Coffee">Coffee</option>
+                      <option value="Drinks">Drinks</option>
+                      <option value="Food">Food</option>
+                      <option value="Outdoors">Outdoors</option>
+                      <option value="Sights">Sights</option>
+                      <option value="Trending">Trending</option>
                     </select>
-                    <input id="location" />
-                    <button id="searchLocation">Search</button>
-                </form>
+                    <input id="location" type="text" placeholder="Search address" />
+                    <button id="searchLocation" class="searchButton"><i class="fas fa-search"></i></button>
+          
+                  </form>
                 <h2 id="currentDate">date & time</h2>
             </header>
 
@@ -80,7 +87,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <br />
+                    <br>
 
                     <!-- WEEKLY FORECAST PLACEHOLDER -->
                     <div class="collapsible sliding">
@@ -141,6 +148,7 @@
                     </div>
                 </div>
             </div>
+            <br>
 
             <!-- TRAIN SCHEDULE -->
             <div class="wrapping">
@@ -174,6 +182,7 @@
                     <tbody></tbody>
                 </table>
             -->
+        </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
         <script src="./assets/javascript/searchResults.js"></script>
