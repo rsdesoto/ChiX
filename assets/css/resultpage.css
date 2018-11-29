@@ -231,3 +231,9 @@ h3 {
     opacity: 0.7;
     /* width: 300px; */
 }
+
+/* TRAIN SCHEDULE BACKGROUND */
+.trainBg {
+  background-color: white;
+  opacity: 0.7;
+}
