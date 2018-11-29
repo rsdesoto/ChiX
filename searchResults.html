@@ -19,11 +19,11 @@
             crossorigin="anonymous"
         />
         <link
-        rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-        crossorigin="anonymous"
-      />
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+            crossorigin="anonymous"
+        />
         <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -41,26 +41,50 @@
         <!-- TITLE (ZIPCODE, DATE, TIME) -->
         <div class="wrapper">
             <header>
-                <div class="zoom">
-                    <h1><a href="./index.html" id="titleStyle">Chi<b>X</b></a></h1>
-                </div>
-                <div id="searchWrap">
-                <form class="searchBar" action="./searchResults.html">
-                    <select id="selector">
-                      <option disabled selected>Select option</option>
-                      <option value="Arts">Arts</option>
-                      <option value="Coffee">Coffee</option>
-                      <option value="Drinks">Drinks</option>
-                      <option value="Food">Food</option>
-                      <option value="Outdoors">Outdoors</option>
-                      <option value="Sights">Sights</option>
-                      <option value="Trending">Trending</option>
-                    </select>
-                    <input id="location" type="text" placeholder="Search address" />
-                    <button id="searchLocation" class="searchButton"><i class="fas fa-search"></i></button>
-                  </form>
-                </div>
-                <h2 id="currentDate"></h2>
+                <nav class="navbar fixed-top navbar-light ">
+                    <div class="zoom">
+                        <h1>
+                            <a href="./index.html" id="titleStyle"
+                                >Chi<b>X</b></a
+                            >
+                        </h1>
+                    </div>
+
+                    <div id="searchWrap" class="justify-content-end ry-edit">
+                        <form
+                            class="searchBar form-inline"
+                            action="./searchResults.html"
+                        >
+                            <select id="selector">
+                                <option disabled selected>Select option</option>
+                                <option value="Arts">Arts</option>
+                                <option value="Coffee">Coffee</option>
+                                <option value="Drinks">Drinks</option>
+                                <option value="Food">Food</option>
+                                <option value="Outdoors">Outdoors</option>
+                                <option value="Sights">Sights</option>
+                                <option value="Trending">Trending</option>
+                            </select>
+                            <input
+                                id="location"
+                                type="text"
+                                placeholder="Search address"
+                            />
+                            <button id="searchLocation" class="searchButton">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <h2
+                            id="currentDate"
+                            class="form-inline justify-content-end"
+                        >
+                            date & time
+                        </h2>
+                    </div>
+                </nav>
+
             </header>
 
             <div class="content-wrap">
@@ -81,14 +105,14 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td id = currentTemp></td>
-                                    <td id = currentWind></td>
-                                    <td id = currentOutlook></td>
+                                    <td id="currentTemp"></td>
+                                    <td id="currentWind"></td>
+                                    <td id="currentOutlook"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <br>
+                    <br />
 
                     <!-- WEEKLY FORECAST PLACEHOLDER -->
                     <div class="collapsible sliding">
@@ -102,9 +126,7 @@
                                     <th scope="col">Outlook</th>
                                 </tr>
                             </thead>
-                            <tbody class= "js-data-append">
- 
-                            </tbody>
+                            <tbody class="js-data-append"></tbody>
                         </table>
                     </div>
                 </div>
@@ -112,7 +134,7 @@
 
             <!-- MAP & FOOD LIST -->
             <div class="wrapping">
-               <h3 id='queryType'></h3>
+                <h3 id="queryType"></h3>
                 <div class="mapListWrapper">
                     <div id="map">map here</div>
 
@@ -126,27 +148,27 @@
                     </div>
                 </div>
             </div>
-            <br>
+            <br />
 
             <!-- TRAIN SCHEDULE -->
             <div class="wrapping">
                 <h3>Train Schedule</h3>
 
                 <div class="trainBg">
-                <table class="table table-striped" id="train-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Station</th>
-                            <th scope="col">Route</th>
-                            <th scope="col">Direction</th>
-                            <th scope="col">Next Arrival</th>
-                            <th scope="col">Next Train</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                    <table class="table table-striped" id="train-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Station</th>
+                                <th scope="col">Route</th>
+                                <th scope="col">Direction</th>
+                                <th scope="col">Next Arrival</th>
+                                <th scope="col">Next Train</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
-        </div>
 
             <!--
                 <table class="table table-sm table-hover" id="train-table">
@@ -163,7 +185,7 @@
                 </table>
             -->
         </div>
-        </div>
+
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.23/moment-timezone-with-data-2012-2022.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.23/moment-timezone-utils.js"></script>
