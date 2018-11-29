@@ -263,7 +263,7 @@ footer {
   font-size: 12px;
 }
 
-@media screen and (max-width: 425px) {
+ @media screen and (max-width: 425px) {
     #headerGridContainer {
         display: grid;
         grid-template-rows: repeat(3, 1fr);
@@ -272,22 +272,18 @@ footer {
         justify-content: center !important;
     }
 
-    * {
-        margin: 0 !important;
-    }
-
     #mobileTable, .tableMobileClass {
         width: 100%;
     }
-
-    #headerFirstRow {
+ 
+    #headerFirstRow, #map {
         grid-row: 1;
     }
     
-    #headerSecondRow {
+    #headerSecondRow, #listHolder {
         grid-row: 2;
     }
-    
+   
     #headerThirdRow {
         grid-row: 3;
     }
@@ -297,20 +293,38 @@ footer {
         overflow: auto;
     }
 
-    *:not(img) {
+    #map {
         width: 100% !important;
+    }
+
+    *:not(img, #map) {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .content-wrap {
+        margin: 30px 0;
     }
 
     .mapListWrapper {
         display: grid;
         grid-template-rows: repeat(2, 1fr);
         grid-auto-columns: 100%;
+        grid-row-gap: 30px;
     }
 
     ol {
         padding: 0;
     }
-}
 
+    #trainBg, #train-table {
+        width: 256px !important;
+    }
+    .wrapping, .table-responsive {
+        margin: 0;
+        width: 100% !important;
+        overflow: auto;
+    }
+}
 
 
