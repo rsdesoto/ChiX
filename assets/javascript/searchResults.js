@@ -72,6 +72,10 @@ $(document).on("click", "#searchLocation", function() {
     resultsAddress = [];
     resultsId = [];
     query = $('#selector').val();
+    database.ref('/query').set({
+        query: query,
+    });
+    
     $('#queryType').html(`${query} nearby`)
     $.ajax({
         async: false,
