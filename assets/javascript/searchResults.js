@@ -285,24 +285,25 @@ function WeatherFunction(){
         $(".City").html("<h1> Current " + weather.city.name + " Weather</h1>");
     
         weatherList.forEach(timeFrame => {
+            console.log("successfullyenteredweatherlistloop");
+        //    var time = moment(timeFrame.dt_txt).tz("America/Chicago").format("llll");
             var time = moment.utc(timeFrame.dt_txt).tz("America/Chicago").format("llll");
             var weatherDiv = $("<tr>")
-            var time = $("<h2>").text(time);
+            var timeData = $("<td>").text(time);
             var tempMax = $("<td>").text("High (F): " + timeFrame.main.temp_max);
-            var tempMin = $("<td>").text(" Low : " + timeFrame.main.temp_min);
             var wind = $("<td>").text(" Wind (mph): " + timeFrame.wind.speed);
             var outlook = $("<td>").text(" Outlook: " + timeFrame.weather[0].description);
     
-            weatherDiv.append(time);
+            weatherDiv.append(timeData);
             weatherDiv.append(tempMax);
-            weatherDiv.append(tempMin);
             weatherDiv.append(wind);
             weatherDiv.append(outlook)
-            $(".forecastTime").append(weatherDiv);
-            $(".forecastTempMax").append(weatherDiv);
-            $(".forecastTempMin").append(weatherDiv);
-            $(".forecastWind").append(weatherDiv);
-            $(".forecastOutlook").append(weatherDiv);
+            console.log(weatherDiv)
+            $(".js-data-append").append(weatherDiv);
+
+            // $(".forecastTempMax").append(weatherDiv);
+            // $(".forecastWind").append(weatherDiv);
+            // $(".forecastOutlook").append(weatherDiv);
        
         });
         
