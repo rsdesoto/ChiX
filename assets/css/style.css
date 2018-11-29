@@ -24,6 +24,10 @@ input {
   border-radius: 5px;
 }
 
+option {
+  color: #000;
+}
+
 /* changing placeholder text source: https://www.w3schools.com/howto/howto_css_placeholder.asp */
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
