@@ -16,6 +16,10 @@ body {
   text-decoration: none;
 }
 
+b {
+  color: #4caf50;
+}
+
 .zoom {
   transition: transform 0.2s; /* Animation */
   margin: 10%;
