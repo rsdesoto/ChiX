@@ -22,16 +22,13 @@ let resultsAddress = [];
 let resultsId = [];
 
 const printResults = response => {
-    let totalResults = 30;
-    for (let i = 0; i < totalResults; i++) {
-        if (response.response.venues[i].location.address) {
-            resultsName.push(response.response.venues[i].name);
-            resultsLat.push(response.response.venues[i].location.lat);
-            resultsLng.push(response.response.venues[i].location.lng);
-            resultsAddress.push(response.response.venues[i].location.address.replace(/ /g, '+'));
-            resultsId.push(response.response.venues[i].id);
-        } else {
-            totalResults++;
+    for (let i = 0; i < response.response.groups[0].items.length; i++) {
+        if (response.response.groups[0].items[i].venue.location.address) {
+            resultsName.push(response.response.groups[0].items[i].venue.name);
+            resultsLat.push(response.response.groups[0].items[i].venue.location.lat);
+            resultsLng.push(response.response.groups[0].items[i].venue.location.lng);
+            resultsAddress.push(response.response.groups[0].items[i].venue.location.address.replace(/ /g, '+'));
+            resultsId.push(response.response.groups[0].items[i].venue.id);
         }
     }
 }
@@ -48,7 +45,7 @@ database.ref().once("value", function(snapshot) {
         searchLng = response.results[0].geometry.location.lng;
         $.ajax({
             async: false,
-            url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
+            url: `https://api.foursquare.com/v2/venues/explore?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&section=${query}&limit=30&near=${address}`,
             method: "GET"
         }).then(function(response) {
             printResults(response);
@@ -84,7 +81,7 @@ $(document).on("click", "#searchLocation", function() {
 
         $.ajax({
             async: false,
-            url: `https://api.foursquare.com/v2/venues/search?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&query=${query}&limit=30&ll=${searchLat},${searchLng}`,
+            url: `https://api.foursquare.com/v2/venues/explore?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&section=${query}&limit=30&near=${address}`,
             method: "GET"
         }).then(function(response) {
             printResults(response);
@@ -112,18 +109,6 @@ $(document).on("click", "#searchLocation", function() {
     clearMarkers();
     $("ol").remove();
     $("#listHolder").append($("<ol>"));
-    // for (let i = 0; i < resultsLat.length; i++) {
-    //     console.log('mp');
-    //     let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
-    //     let marker = new google.maps.Marker({
-    //         position: latlng,
-    //         label: `${i + 1}`,
-    //         map: map
-    //     });
-    //     console.log('hey');
-    //     $("ol").append($(`<a href='${resultsAddress[i]}'><li>${resultsName[i]}</li></a>`));
-    //     console.log(resultsAddress[i]);
-    // }
     for (let i = 0; i < resultsLat.length; i++) {
         markerArr[i].setMap(map);
     }
@@ -146,7 +131,7 @@ function initMap() {
     $("#listHolder ol").empty();
     for (let i = 0; i < resultsLat.length; i++) {
         let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
-
+        console.log('in');
         let marker = new google.maps.Marker({
             position: latlng,
             label: `${i + 1}`,
