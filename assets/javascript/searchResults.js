@@ -128,13 +128,13 @@ function initMap() {
         markerArr.push(marker);
         $("#listHolder ol").append(
             $(
-                `<li class="list-group-item">${i + 1}) ${
+                `<a data-toggle="collapse" href="#collapseLinks${i}" role="button" aria-expanded="false" aria-controls="collapseLinks"><li class="list-group-item">${i + 1}) ${
                     resultsName[i]
-                }<ul><li><a id='directionsLink' href='https://www.google.com/maps/place/${
+                }<ul><li class='collapse' id='collapseLinks${i}'><a id='directionsLink' href='https://www.google.com/maps/place/${
                     resultsAddress[i]
-                }'>Directions</a></li><li><a id='fourSquareLink' href='https://foursquare.com/v/${
+                }'>Directions</a></li><li class='collapse' id='collapseLinks${i}'><a id='fourSquareLink' href='https://foursquare.com/v/${
                     resultsId[i]
-                }'>FOURSQUARE</a></li></ul></li>`
+                }'>FOURSQUARE</a></li></ul></li></a>`
             )
         );
     }
