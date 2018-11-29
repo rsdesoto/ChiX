@@ -119,7 +119,7 @@ function initMap() {
     $("#listHolder ol").empty();
     for (let i = 0; i < resultsLat.length; i++) {
         let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
-        console.log("in");
+
         let marker = new google.maps.Marker({
             position: latlng,
             label: `${i + 1}`,
@@ -255,8 +255,6 @@ function UpdateWeather() {
 
     var weatherQuery = "https://cors-anywhere.herokuapp.com/" + weatherQueryRaw;
 
-    $(".City").html("<h1> Current " + weather.city.name + " Weather</h1>");
-
     $.ajax({
         url: weatherQuery1,
         method: "GET"
@@ -272,6 +270,8 @@ function UpdateWeather() {
     }).then(function(response) {
         var weatherList = response.list;
         var weather = response;
+
+        $(".City").html("<h1> Current " + weather.city.name + " Weather</h1>");
 
         weatherList.forEach(timeFrame => {
             var time = moment
@@ -290,7 +290,7 @@ function UpdateWeather() {
             weatherDiv.append(tempMin);
             weatherDiv.append(wind);
             weatherDiv.append(outlook);
-            console.log(weatherDiv);
+
             $(".js-data-append").append(weatherDiv);
         });
     });
