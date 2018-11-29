@@ -36,6 +36,7 @@ const printResults = response => {
 database.ref().once("value", function(snapshot) {
     address = snapshot.val().location.address;
     query = snapshot.val().query.query;
+    $('#queryType').html(`${query} nearby`)
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
@@ -70,7 +71,8 @@ $(document).on("click", "#searchLocation", function() {
     resultsLng = [];
     resultsAddress = [];
     resultsId = [];
-    query = $('.drop').val();
+    query = $('#selector').val();
+    $('#queryType').html(`${query} nearby`)
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
