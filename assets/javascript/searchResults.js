@@ -25,18 +25,26 @@ const printResults = response => {
     for (let i = 0; i < response.response.groups[0].items.length; i++) {
         if (response.response.groups[0].items[i].venue.location.address) {
             resultsName.push(response.response.groups[0].items[i].venue.name);
-            resultsLat.push(response.response.groups[0].items[i].venue.location.lat);
-            resultsLng.push(response.response.groups[0].items[i].venue.location.lng);
-            resultsAddress.push(response.response.groups[0].items[i].venue.location.address.replace(/ /g, '+'));
+            resultsLat.push(
+                response.response.groups[0].items[i].venue.location.lat
+            );
+            resultsLng.push(
+                response.response.groups[0].items[i].venue.location.lng
+            );
+            resultsAddress.push(
+                response.response.groups[0].items[
+                    i
+                ].venue.location.address.replace(/ /g, "+")
+            );
             resultsId.push(response.response.groups[0].items[i].venue.id);
         }
     }
-}
+};
 
 database.ref().once("value", function(snapshot) {
     address = snapshot.val().location.address;
     query = snapshot.val().query.query;
-    $('#queryType').html(`${query} nearby`)
+    $("#queryType").html(`${query} nearby`);
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
@@ -59,7 +67,7 @@ database.ref().once("value", function(snapshot) {
             //the script is appended to the body and runs when this occurs
         });
         getNearestStation(searchLng, searchLat);
-        WeatherFunction()
+        WeatherFunction();
     });
 });
 
@@ -71,8 +79,8 @@ $(document).on("click", "#searchLocation", function() {
     resultsLng = [];
     resultsAddress = [];
     resultsId = [];
-    query = $('#selector').val();
-    $('#queryType').html(`${query} nearby`)
+    query = $("#selector").val();
+    $("#queryType").html(`${query} nearby`);
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
@@ -88,7 +96,7 @@ $(document).on("click", "#searchLocation", function() {
         }).then(function(response) {
             printResults(response);
             getNearestStation(searchLng, searchLat);
-            WeatherFunction()
+            WeatherFunction();
             $("#appendedScript").remove();
             $("body").append(
                 $(
@@ -97,8 +105,6 @@ $(document).on("click", "#searchLocation", function() {
             );
         });
     });
-
-    
 
     function clearMarkers() {
         for (let i = 0; i < markerArr[i].length; i++) {
@@ -133,7 +139,7 @@ function initMap() {
     $("#listHolder ol").empty();
     for (let i = 0; i < resultsLat.length; i++) {
         let latlng = { lat: resultsLat[i], lng: resultsLng[i] };
-        console.log('in');
+        console.log("in");
         let marker = new google.maps.Marker({
             position: latlng,
             label: `${i + 1}`,
@@ -246,79 +252,74 @@ function trainInfoGet(data) {
     });
 }
 
-function WeatherFunction(){
+function WeatherFunction() {
+    var weatherQueryRaw1 =
+        "api.openweathermap.org/data/2.5/weather?lat=41.8951430959825&lon=-87.62266159057619&units=imperial&APPID=91266e16eedc61cbd17d79ee410ef801";
+    var weatherQuery1 =
+        "https://cors-anywhere.herokuapp.com/" + weatherQueryRaw1;
 
-    var weatherQueryRaw1 = "api.openweathermap.org/data/2.5/weather?lat=41.8951430959825&lon=-87.62266159057619&units=imperial&APPID=91266e16eedc61cbd17d79ee410ef801"
-    var weatherQuery1 = "https://cors-anywhere.herokuapp.com/" + weatherQueryRaw1;
-    
     var weatherQueryRaw =
-    "api.openweathermap.org/data/2.5/forecast?lat=41.8951430959825&lon=-87.62266159057619&units=imperial&APPID=91266e16eedc61cbd17d79ee410ef801";
-    
-    var weatherQuery = "https://cors-anywhere.herokuapp.com/" + weatherQueryRaw;    
+        "api.openweathermap.org/data/2.5/forecast?lat=41.8951430959825&lon=-87.62266159057619&units=imperial&APPID=91266e16eedc61cbd17d79ee410ef801";
+
+    var weatherQuery = "https://cors-anywhere.herokuapp.com/" + weatherQueryRaw;
 
     $.ajax({
-        url:weatherQuery1,
-        method: "GET" 
-    })
-    .then(function(response){
+        url: weatherQuery1,
+        method: "GET"
+    }).then(function(response) {
         console.log(response);
-    
-        
-            $("#currentTemp").text(response.main.temp);
-            $("#currentWind").text(response.wind.speed);
-            $("#currentOutlook").text(response.weather[0].description);
-    
+
+        $("#currentTemp").text(response.main.temp);
+        $("#currentWind").text(response.wind.speed);
+        $("#currentOutlook").text(response.weather[0].description);
     });
-    
-    
+
     $.ajax({
         url: weatherQuery,
         method: "GET"
-    })
-    .then(function(response) {
+    }).then(function(response) {
         console.log(weatherQuery);
         console.log(response);
         console.log(response.list);
-    
-        var weatherList = response.list
-        var weather = response
-        console.log(weatherList)
-    
+
+        var weatherList = response.list;
+        var weather = response;
+        console.log(weatherList);
+
         $(".City").html("<h1> Current " + weather.city.name + " Weather</h1>");
-    
+
         weatherList.forEach(timeFrame => {
             console.log("successfullyenteredweatherlistloop");
-        //    var time = moment(timeFrame.dt_txt).tz("America/Chicago").format("llll");
-            var time = moment.utc(timeFrame.dt_txt).tz("America/Chicago").format("llll");
-            var weatherDiv = $("<tr>")
+            //    var time = moment(timeFrame.dt_txt).tz("America/Chicago").format("llll");
+            var time = moment
+                .utc(timeFrame.dt_txt)
+                .tz("America/Chicago")
+                .format("llll");
+            var weatherDiv = $("<tr>");
             var timeData = $("<td>").text(time);
             var tempMax = $("<td>").text(timeFrame.main.temp_max);
             var tempMin = $("<td>").text(timeFrame.main.temp_min);
             var wind = $("<td>").text(timeFrame.wind.speed);
             var outlook = $("<td>").text(timeFrame.weather[0].description);
-    
+
             weatherDiv.append(timeData);
             weatherDiv.append(tempMax);
             weatherDiv.append(tempMin);
             weatherDiv.append(wind);
-            weatherDiv.append(outlook)
-            console.log(weatherDiv)
+            weatherDiv.append(outlook);
+            console.log(weatherDiv);
             $(".js-data-append").append(weatherDiv);
 
             // $(".forecastTempMax").append(weatherDiv);
             // $(".forecastWind").append(weatherDiv);
             // $(".forecastOutlook").append(weatherDiv);
-       
         });
-        
     });
 
     $("#currentDate").text(moment().format("llll"));
-    }
-    
+}
 
-$('.collapsible').on('click',function(e){
+$(".collapsible").on("click", function(e) {
     e.preventDefault();
-    $(this).toggleClass('active');
+    $(this).toggleClass("active");
 });
-    
