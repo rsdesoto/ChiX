@@ -21,6 +21,10 @@ body {
     text-decoration: none;
 }
 
+option {
+    color: #000;
+}
+
 .zoom {
     transition: transform 0.2s; /* Animation */
     margin: 10px;

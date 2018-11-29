@@ -310,6 +310,8 @@ function WeatherFunction(){
         });
         
     });
+
+    $("#currentDate").text(moment().format("llll"));
     }
     
 
