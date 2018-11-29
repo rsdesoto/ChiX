@@ -17,7 +17,7 @@ body {
 
 /* HEADER ZOOM IN HOVER */
 #titleStyle {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -38,7 +38,7 @@ h2 {
     /* position: absolute; */
     top: 5%;
     left: 70%;
-    color: black;
+    color: white;
 }
 .wrapper {
     height: 100%;
@@ -70,7 +70,7 @@ header h1 {
 }
 
 header h2 {
-    color: black;
+    color: white;
     font-size: 30px;
     font-weight: 200;
 }
