@@ -1,16 +1,12 @@
 /* @nodws */
 
-.ry-edit {
-    align-content: flex-end;
-    justify-content: flex-end;
-}
 
 body {
     background: url("../image/cloudy.jpg");
     background-attachment: fixed;
     background-position: no-repeat;
     width: 100vw;
-    height: 100vh;
+
     background-size: cover;
     overflow: scroll;
 }
@@ -51,10 +47,17 @@ h2 {
 }
 
 .content-wrap {
+   margin-top: 120px;
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+.content-wrap2 {
    
     flex: 1 1 auto;
     overflow-y: auto;
 }
+
 
 header {
     height: 23%;
