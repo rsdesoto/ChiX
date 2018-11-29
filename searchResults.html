@@ -2,16 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Explore Chicago</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            media="screen"
-            href="./assets/css/map.css"
-        />
+        
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -36,13 +30,19 @@
             media="screen"
             href="assets/css/resultpage.css"
         />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="./assets/css/map.css"
+        />
     </head>
     <body>
         <!-- TITLE (ZIPCODE, DATE, TIME) -->
         <div class="wrapper">
             <header>
-                <nav class="navbar fixed-top navbar-light ">
-                    <div class="zoom">
+                <nav id='headerGridContainer' class="navbar fixed-top navbar-light ">
+                    <div class="zoom" id='headerFirstRow'>
                         <h1>
                             <a href="./index.html" id="titleStyle"
                                 >Chi<b>X</b></a
@@ -50,7 +50,7 @@
                         </h1>
                     </div>
 
-                    <div id="searchWrap" class="justify-content-end">
+                    <div id="searchWrap headerSecondRow" class="justify-content-end">
                         <form
                             class="searchBar form-inline"
                             action="./searchResults.html"
@@ -75,7 +75,7 @@
                             </button>
                         </form>
                     </div>
-                    <div>
+                    <div id='headerThirdRow'>
                         <h2
                             id="currentDate"
                             class="form-inline justify-content-end"
