@@ -116,6 +116,12 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 5px;
 }
 
+#searchWrap {
+  position: relative;
+  top: 70px;
+  right: 150px;
+}
+
 /* SECTION HEADER */
 h3 {
   font-size: 26px;
@@ -220,4 +226,10 @@ h3 {
   /* padding-left: 10px; */
   opacity: 0.7;
   /* width: 300px; */
+}
+
+/* TRAIN SCHEDULE BACKGROUND */
+.trainBg {
+  background-color: white;
+  opacity: 0.7;
 }
