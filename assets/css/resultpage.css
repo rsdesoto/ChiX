@@ -5,14 +5,15 @@ body {
     background-attachment: fixed;
     background-position: no-repeat;
     width: 100vw;
-
     background-size: cover;
     overflow: scroll;
+    background-color: rgba(14, 39, 68, 0.2);
+    background-blend-mode: darken;
 }
 
 #searchWrap {
-    display: inline-block;
-    margin-left: -40%;
+    display: block;
+/*     margin-left: -40%; */
 }
 
 /* HEADER ZOOM IN HOVER */
@@ -247,13 +248,17 @@ a:hover {
 }
 
 .list-group-flush {
-    /* padding-left: 10px; */
     opacity: 0.7;
-    /* width: 300px; */
 }
 
 /* TRAIN SCHEDULE BACKGROUND */
 .trainBg {
     background-color: white;
     opacity: 0.7;
+}
+
+/***** FOOTER *****/
+footer {
+  color: white;
+  font-size: 12px;
 }
