@@ -298,7 +298,7 @@ function WeatherFunction(){
     
         weatherList.forEach(timeFrame => {
             var time = moment.utc(timeFrame.dt_txt).tz("America/Chicago").format("llll");
-            var weatherDiv = $("<div>")
+            var weatherDiv = $("<tr>")
             var time = $("<h2>").text(time);
             var tempMax = $("<td>").text("High (F): " + timeFrame.main.temp_max);
             var tempMin = $("<td>").text(" Low : " + timeFrame.main.temp_min);
