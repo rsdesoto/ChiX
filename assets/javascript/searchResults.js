@@ -79,8 +79,13 @@ $(document).on("click", "#searchLocation", function() {
     resultsLng = [];
     resultsAddress = [];
     resultsId = [];
-    query = $("#selector").val();
-    $("#queryType").html(`${query} nearby`);
+    query = $('#selector').val();
+    database.ref('/query').set({
+        query: query,
+    });
+    
+    $('#queryType').html(`${query} nearby`)
+
     $.ajax({
         async: false,
         url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s`,
