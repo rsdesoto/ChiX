@@ -1,8 +1,10 @@
-# [project-1](https://rsdesoto.github.io/project-1/)
+# [Chi X](https://rsdesoto.github.io/project-1/)
 
-This is an app to fetch, from a search, nearby restaurants and cafes, nearest CTA train stop and next arrival times, and weather.
+This is an app to fetch, from a search, nearby attractions, the nearest CTA train stop with incoming arrival times, and weather information for the city of Chicago.
 
-[some more text explaining]
+Nearby attractions are displayed on a map with their locations marked. The attractions are also listed with links for directions (Google) and additional information (FOURSQUARE).
+
+The current weather is displayed as well as the forecast every three hours for the next five days. 
 
 ### Team members
 
@@ -14,7 +16,7 @@ This is an app to fetch, from a search, nearby restaurants and cafes, nearest CT
 
 ### Credits
 
-Firebase used to pass information between pages
+Google Firebase used to pass information between pages
 
 APIs used:
 
