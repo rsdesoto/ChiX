@@ -226,7 +226,7 @@ function trainInfoGet(data) {
                 $("<td>").text(trainRts[route]),
                 $("<td>").text(trainSpec.destNm),
                 $("<td>").text(arrTime),
-                $("<td>").text(minToNext)
+                $("<td>").text(minToNext + " min")
             );
 
             $("#train-table > tbody").append(newRow);
