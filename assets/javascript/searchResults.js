@@ -46,7 +46,7 @@ database.ref().once("value", function(snapshot) {
         searchLng = response.results[0].geometry.location.lng;
         $.ajax({
             async: false,
-            url: `https://api.foursquare.com/v2/venues/explore?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&section=${query}&limit=30&near=${address}`,
+            url: `https://api.foursquare.com/v2/venues/explore?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&section=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
             printResults(response);
@@ -83,7 +83,7 @@ $(document).on("click", "#searchLocation", function() {
 
         $.ajax({
             async: false,
-            url: `https://api.foursquare.com/v2/venues/explore?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&section=${query}&limit=30&near=${address}`,
+            url: `https://api.foursquare.com/v2/venues/explore?client_id=XLARRNIFOXVD2CYYWZTPLXOXPI3BFBECOJTZEVZAI0OCO01S&client_secret=TNAAYAFVDDSPVDK1RTGIW2VPZTBKCOAVYVXSYEBBU2MXF015&v=20180323&section=${query}&limit=30&ll=${searchLat},${searchLng}`,
             method: "GET"
         }).then(function(response) {
             printResults(response);
@@ -142,7 +142,7 @@ function initMap() {
         markerArr.push(marker);
         $("#listHolder ol").append(
             $(
-                `<li class="list-group-item">${
+                `<li class="list-group-item">${i + 1}) ${
                     resultsName[i]
                 }<ul><li><a id='directionsLink' href='https://www.google.com/maps/place/${
                     resultsAddress[i]
