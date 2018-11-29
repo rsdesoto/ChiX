@@ -6,6 +6,15 @@ Nearby attractions are displayed on a map with their locations marked. The attra
 
 The current weather is displayed as well as the forecast every three hours for the next five days. 
 
+Inline-style: 
+![alt text](https://github.com/rdesoto/ChiX/raw/master/src/assets/images/bean.jpg "Logo Title Text 1")
+
+Reference-style: 
+![alt text][logo]
+
+[logo]: https://github.com/rdesoto/ChiX/raw/master/src/assets/images/bean.jpg "Logo Title Text 2"
+
+
 ### Team members
 
 -   Amer Albareedi [aalbareedi](https://github.com/aalbareedi)
