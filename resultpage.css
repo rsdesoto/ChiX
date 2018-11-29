@@ -6,6 +6,8 @@ body {
   height: 100vh;
   background-size: cover;
   overflow: scroll;
+  background-color: rgba(14, 39, 68, 0.2);
+  background-blend-mode: darken;
 }
 
 /* HEADER ZOOM IN HOVER */
@@ -114,9 +116,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #searchWrap {
-  position: relative;
-  top: 70px;
-  right: 150px;
+  display: block;
 }
 
 /* SECTION HEADER */
