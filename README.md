@@ -1,4 +1,4 @@
-# [Chi X](https://rsdesoto.github.io/project-1/)
+# [Chi X](https://rsdesoto.github.io/ChiX/index.html)
 
 This is an app to fetch, from a search, nearby attractions, the nearest CTA train stop with incoming arrival times, and weather information for the city of Chicago.
 
