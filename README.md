@@ -4,16 +4,45 @@ This is an app to fetch, from a search, nearby attractions, the nearest CTA trai
 
 Nearby attractions are displayed on a map with their locations marked. The attractions are also listed with links for directions (Google) and additional information (FOURSQUARE).
 
-The current weather is displayed as well as the forecast every three hours for the next five days. 
+The current weather is displayed as well as the forecast every three hours for the next five days.
 
-Inline-style: 
-![alt text](https://github.com/rdesoto/ChiX/raw/master/src/assets/images/bean.jpg "Logo Title Text 1")
+### Instructions
 
-Reference-style: 
-![alt text][logo]
+#### Intro Page
 
-[logo]: https://github.com/rdesoto/ChiX/raw/master/src/assets/images/bean.jpg "Logo Title Text 2"
+The landing page includes a search bar for location and a drop down for the type of nearby attraction you are interested in. The attraction options are
 
+-   Arts
+-   Coffee
+-   Drinks
+-   Food
+-   Outdoors
+-   Sights
+-   Trending
+
+![intro](https://rsdesoto.github.io/ChiX/assets/image/readme_img/intro_page.png)
+
+Click the "Search" button to get to the results page.
+
+#### Results Page
+
+![overall view](https://rsdesoto.github.io/ChiX/assets/image/readme_img/app_open.png)
+
+The results view shows the current time, weather, map of attractions, and train tracker.
+
+Click the "Right Now" and "Hourly Forecast" sections to toggle the current weather display, as well as the five-day forecast.
+
+![weather view](https://rsdesoto.github.io/ChiX/assets/image/readme_img/weather_open.png)
+
+The map is a fully functional Google Maps window. Click and drag to pan, click +/- to zoom in and out.
+
+Each entry on the list of attractions to the right of the map can be expanded for more information. Links go to Google Maps and FOURSQUARE.
+
+![map view](https://rsdesoto.github.io/ChiX/assets/image/readme_img/dropdown_open.png)
+
+At the bottom of the page, the train schedule shows up to 10 trains leaving the closest CTA L station.
+
+![train view](https://rsdesoto.github.io/ChiX/assets/image/readme_img/train_tracker.png)
 
 ### Team members
 
@@ -44,6 +73,3 @@ introduce technologies
 explain the project
 challenges overcome
 next steps/future development
-
-
-![alt text](https://images.sftcdn.net/images/t_app-cover-l,f_auto/p/ce2ece60-9b32-11e6-95ab-00163ed833e7/260663710/the-test-fun-for-friends-screenshot.jpg)
