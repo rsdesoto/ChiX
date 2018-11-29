@@ -265,10 +265,19 @@ footer {
 
 @media screen and (max-width: 425px) {
     #headerGridContainer {
+        display: grid;
         grid-template-rows: repeat(3, 1fr);
         grid-template-columns: 100%;
         position: relative;
         justify-content: center !important;
+    }
+
+    * {
+        margin: 0 !important;
+    }
+
+    #mobileTable, .tableMobileClass {
+        width: 100%;
     }
 
     #headerFirstRow {
@@ -281,6 +290,25 @@ footer {
     
     #headerThirdRow {
         grid-row: 3;
+    }
+
+    #mobileScroll {
+        height: 250px;
+        overflow: auto;
+    }
+
+    *:not(img) {
+        width: 100% !important;
+    }
+
+    .mapListWrapper {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-auto-columns: 100%;
+    }
+
+    ol {
+        padding: 0;
     }
 }
 
