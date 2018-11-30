@@ -1,260 +1,268 @@
 /* @nodws */
 
 body {
-    background: url("../image/cloudy.jpg");
-    background-attachment: fixed;
-    background-position: no-repeat;
-    width: 100vw;
-    background-size: cover;
-    overflow: scroll;
-    background-color: rgba(14, 39, 68, 0.2);
-    background-blend-mode: darken;
+  background: url("../image/cloudy.jpg");
+  background-attachment: fixed;
+  background-position: no-repeat;
+  width: 100vw;
+  background-size: cover;
+  overflow: scroll;
+  background-color: rgba(14, 39, 68, 0.2);
+  background-blend-mode: darken;
 }
 
 #searchWrap {
-    display: block;
-/*     margin-left: -40%; */
+  display: block;
+  /*     margin-left: -40%; */
 }
 
 /* HEADER ZOOM IN HOVER */
 #titleStyle {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 option {
-    color: #000;
+  color: #000;
+}
+
+b {
+  color: #4caf50;
 }
 
 .zoom {
-    transition: transform 0.2s; /* Animation */
-    margin: 10px;
-    color: white;
-    text-decoration: none;
+  transition: transform 0.2s; /* Animation */
+  margin: 10px;
+  color: white;
+  text-decoration: none;
 }
 .zoom:hover {
-    -webkit-transform: scale(0.8);
-    transform: scale(0.8);
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
 }
 /* HEADER */
 h2 {
-    font-size: 25px;
-    font-weight: 300;
-    /* position: absolute; */
-    top: 5%;
-    left: 70%;
-    color: white;
+  font-size: 25px;
+  font-weight: 300;
+  /* position: absolute; */
+  top: 5%;
+  left: 70%;
+  color: white;
 }
 .wrapper {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .content-wrap {
-    margin-top: 130px;
-    flex: 1 1 auto;
-    overflow-y: auto;
+  margin-top: 130px;
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 
 .content-wrap2 {
-    flex: 1 1 auto;
-    overflow-y: auto;
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 
 header {
-    height: 23%;
-    width: 100vw;
-    flex: 0 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 23%;
+  width: 100vw;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
-    margin: 10px;
-    opacity: 1;
-    color: white;
-    font-size: 50px;
-    font-weight: 200;
+  margin: 10px;
+  opacity: 1;
+  color: white;
+  font-size: 50px;
+  font-weight: 200;
 }
 
 .navbar {
-    background-color: rgba(100, 112, 131, 0.7);
+  background-color: rgba(100, 112, 131, 0.7);
 }
 
 header h2 {
-    color: white;
-    font-size: 30px;
-    font-weight: 200;
+  color: white;
+  font-size: 30px;
+  font-weight: 200;
 }
 
 /* SEARCH BAR */
 #selector {
-    background: rgba(255, 255, 255, 0.4);
-    border: none;
-    color: white;
-    -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
-    height: 44px;
-    margin-right: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  color: white;
+  -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+  height: 44px;
+  margin-right: 4px;
 }
 input {
-    background: rgba(255, 255, 255, 0.4);
-    border: none;
-    text-align: center;
-    padding: 10px;
-    color: white;
-    -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    margin-right: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-right: 4px;
 }
 
 /* changing placeholder text source: https://www.w3schools.com/howto/howto_css_placeholder.asp */
 ::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: white;
-    opacity: 1; /* Firefox */
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
 }
 :-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: white;
+  /* Internet Explorer 10-11 */
+  color: white;
 }
 ::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: white;
+  /* Microsoft Edge */
+  color: white;
 }
 /* transparent search bar source: https://codepen.io/davidung/pen/sgpHL */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 .searchButton {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
 }
 
 /* SECTION HEADER */
 h3 {
-    font-size: 26px;
-    color: white;
-    font-weight: 700;
+  font-size: 26px;
+  color: white;
+  font-weight: 700;
 }
 
 /* WEATHER */
 #weatherCollapse {
-    font-weight: 300;
+  font-weight: 300;
+}
+
+.weatherList {
+  height: 500px;
 }
 
 .wrapping {
-    position: relative;
-    top: 10%;
-    width: 80%;
-    margin: 0 auto;
+  position: relative;
+  top: 10%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 a:visited {
-    color: #AF4C76;
+  color: #af4c76;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .collapsible {
-    background-color: rgba(255, 255, 255, 0);
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-    color: #fff;
-    padding: 10px;
-    margin: 0px;
-    max-height: 40px;
-    overflow: hidden;
-    transition: all 0.4s;
+  background-color: rgba(255, 255, 255, 0);
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px;
+  margin: 0px;
+  max-height: 40px;
+  overflow: hidden;
+  transition: all 0.4s;
 }
 
 .collapsible * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .collapsible.active {
-    background-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    z-index: 200;
-    color: #444;
-    max-height: 3000px;
-    padding: 10px 20px;
-    margin: 10px -10px;
-    transition: all 0.2s, max-height 4.8s;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+  z-index: 200;
+  color: #444;
+  max-height: 3000px;
+  padding: 10px 20px;
+  margin: 10px -10px;
+  transition: all 0.2s, max-height 4.8s;
 }
 
 .collapsible h2 {
-    font-size: 18px;
-    line-height: 20px;
-    position: relative;
+  font-size: 18px;
+  line-height: 20px;
+  position: relative;
 }
 
 .sliding {
-    box-shadow: none !important;
-    margin: 0px !important;
-    padding: 10px !important;
+  box-shadow: none !important;
+  margin: 0px !important;
+  padding: 10px !important;
 }
 
 .collapsible h2::after {
-    content: "+";
-    text-align: center;
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    font-size: 12px;
-    line-height: 15px;
-    opacity: 0.5;
-    right: 0;
-    top: 0;
+  content: "+";
+  text-align: center;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 15px;
+  opacity: 0.5;
+  right: 0;
+  top: 0;
 }
 
 .collapsible:hover h2::after {
-    opacity: 1;
+  opacity: 1;
 }
 
 .collapsible.active h2::after {
-    content: "-";
+  content: "-";
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* MAP & FOOD LIST*/
 #listwrap {
-    /* flex: 1, 1, auto; */
-    overflow-y: auto;
+  /* flex: 1, 1, auto; */
+  overflow-y: auto;
 }
 
 .mapListWrapper {
-    display: flex;
-    justify-content: space-between;
-    /* align-items: center; */
-    height: 500px;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  height: 500px;
 }
 
 .list-group-flush {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 /* TRAIN SCHEDULE BACKGROUND */
 .trainBg {
-    background-color: white;
-    opacity: 0.7;
+  background-color: white;
+  opacity: 0.7;
 }
 
 /***** FOOTER *****/
@@ -263,68 +271,73 @@ footer {
   font-size: 12px;
 }
 
- @media screen and (max-width: 425px) {
-    #headerGridContainer {
-        display: grid;
-        grid-template-rows: repeat(3, 1fr);
-        grid-template-columns: 100%;
-        position: relative;
-        justify-content: center !important;
-    }
+/***** MEDIA QUERY *****/
+@media screen and (max-width: 425px) {
+  #headerGridContainer {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 100%;
+    position: relative;
+    justify-content: center !important;
+  }
 
-    #mobileTable, .tableMobileClass {
-        width: 100%;
-    }
- 
-    #headerFirstRow, #map {
-        grid-row: 1;
-    }
-    
-    #headerSecondRow, #listHolder {
-        grid-row: 2;
-    }
-   
-    #headerThirdRow {
-        grid-row: 3;
-    }
+  #mobileTable,
+  .tableMobileClass {
+    width: 100%;
+  }
 
-    #mobileScroll {
-        height: 250px;
-        overflow: auto;
-    }
+  #headerFirstRow,
+  #map {
+    grid-row: 1;
+  }
 
-    #map {
-        width: 100% !important;
-    }
+  #headerSecondRow,
+  #listHolder {
+    grid-row: 2;
+  }
 
-    *:not(img, #map) {
-        margin: 0 !important;
-        width: 100% !important;
-    }
+  #headerThirdRow {
+    grid-row: 3;
+  }
 
-    .content-wrap {
-        margin: 30px 0;
-    }
+  #mobileScroll:not(h4, #weatherCollpase) {
+    height: 250px;
+    overflow: auto;
+  }
 
-    .mapListWrapper {
-        display: grid;
-        grid-template-rows: repeat(2, 1fr);
-        grid-auto-columns: 100%;
-        grid-row-gap: 30px;
-    }
+  #map {
+    width: 100% !important;
+  }
 
-    ol {
-        padding: 0;
-    }
+  *:not(img, #map) {
+    margin: 0 !important;
+    width: 100% !important;
+  }
 
-    #trainBg, #train-table {
-        width: 256px !important;
-    }
-    .wrapping, .table-responsive {
-        margin: 0;
-        width: 100% !important;
-        overflow: auto;
-    }
+  .content-wrap {
+    margin: 30px 0;
+  }
+
+  .mapListWrapper {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-columns: 100%;
+    grid-row-gap: 30px;
+  }
+
+  ol {
+    padding: 0;
+  }
+
+  #trainBg,
+  #train-table {
+    width: 256px !important;
+  }
+
+  .wrapping,
+  .table-responsive {
+    margin: 0;
+    width: 100% !important;
+    overflow: auto;
+  }
 }
-
-
