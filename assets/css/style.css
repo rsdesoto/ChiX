@@ -85,9 +85,10 @@ input[type="number"]::-webkit-outer-spin-button {
     display: inline;
 }
 
-@media only screen and (max-width: 355px) {
-    /* body {
-    } */
+@media only screen and (max-width: 450px) {
+    body {
+        overflow-x: hidden;
+    }
     #selector {
         width: 100%;
     }
@@ -101,5 +102,18 @@ input[type="number"]::-webkit-outer-spin-button {
     }
     #searchLocation {
         width: 100px;
+    }
+
+    .content {
+        margin-bottom: 150px;
+    }
+
+    .pageTitle {
+        font-size: 5.5em;
+    }
+
+    select {
+        text-align: center;
+        text-align-last: center;
     }
 }
