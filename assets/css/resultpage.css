@@ -22,6 +22,10 @@ body {
     text-decoration: none;
 }
 
+b {
+  color: #4caf50;
+}
+
 option {
     color: #000;
 }
