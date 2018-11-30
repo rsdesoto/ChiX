@@ -263,6 +263,10 @@ footer {
   font-size: 12px;
 }
 
+b {
+    color: #4caf50;
+}
+
  @media screen and (max-width: 425px) {
     #headerGridContainer {
         display: grid;
