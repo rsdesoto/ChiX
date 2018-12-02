@@ -24,12 +24,12 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var database = firebase.database();
-
 /** **************************************************************************************** */
 /** Global variables */
 /** **************************************************************************************** */
 
+var userKey = localStorage.getItem('userKey');
+var database = firebase.database().ref(`/${userKey}`);
 var searchLat;
 var searchLng;
 var address;
@@ -317,9 +317,9 @@ $(".collapsible").on("click", function(e) {
  *
  * This also calls getNearestStation and UpdateWeather in order to generate train and weather information
  */
-database.ref().once("value", function(snapshot) {
-    address = snapshot.val().location.address;
-    query = snapshot.val().query.query;
+database.once("value", function(snapshot) {
+    address = snapshot.val().address;
+    query = snapshot.val().query;
     $("#queryType").html(`${query} nearby`);
     $("#currentDate").text(moment().format("llll"));
     $.ajax({
@@ -337,7 +337,7 @@ database.ref().once("value", function(snapshot) {
             printResults(response);
             $("body").append(
                 $(
-                    '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'
+                    '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCdlLOpKUNWYcyBDzjrKT34oYsQRZ5nBI&callback=initMap"type="text/javascript"></script>'
                 )
             );
         });
@@ -389,7 +389,7 @@ $(document).on("click", "#searchLocation", function(event) {
             $("#appendedScript").remove();
             $("body").append(
                 $(
-                    '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYgcY03FvjLBqaWUGRt-PyD8soS3aAvyA&callback=initMap"type="text/javascript"></script>'
+                    '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s&callback=initMap"type="text/javascript"></script>'
                 )
             );
         });
