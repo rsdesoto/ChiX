@@ -337,7 +337,7 @@ database.once("value", function(snapshot) {
             printResults(response);
             $("body").append(
                 $(
-                    '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCdlLOpKUNWYcyBDzjrKT34oYsQRZ5nBI&callback=initMap"type="text/javascript"></script>'
+                    '<script id="appendedScript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_8m3vV01mZAdSvesbW3G2rkoHLW4WP2s&callback=initMap"type="text/javascript"></script>'
                 )
             );
         });
