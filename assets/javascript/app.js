@@ -8,15 +8,17 @@ var config = {
   };
   firebase.initializeApp(config);
   
-  let database = firebase.database();
-  let firebaseQuery = database.ref('/query');
-  let firebaseLocation = database.ref('/location');
+  var database = firebase.database();
+  var firebaseQuery = database.ref('/query');
+  var firebaseLocation = database.ref('/location');
+  var theKey;
   
   $(document).on('click', '#searchLocation', function() {
-    firebaseLocation.set({
+    theKey = database.ref().push({
       address: $('#location').val(),
-    });
-    firebaseQuery.set({
       query: $('#selector').val()
-    })
+    }).key
+    localStorage.setItem('userKey', theKey);
   });
+
+
